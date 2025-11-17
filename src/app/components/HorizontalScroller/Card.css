@@ -1,0 +1,35 @@
+.card {
+  width: 700px;
+  height: 480px;
+  padding: 1rem;
+  background: #111;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.card-title,
+.card-description {
+  position: relative;
+  z-index: 1;
+}
+
+@media(max-width:768px) {
+.card{
+        width: 20rem;
+        height: 20rem;
+}    
+}
