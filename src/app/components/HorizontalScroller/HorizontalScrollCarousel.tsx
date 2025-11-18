@@ -13,11 +13,10 @@ const HorizontalScrollCarousel = ({ id }: HorizontalScrollCarouselProps) => {
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start start", "end end"], // smoother, more consistent
+    offset: ["start start", "end end"],
   });
 
-  // Move full width of the cards container
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["20%", "-60%"]);
 
   return (
     <section

@@ -1,5 +1,7 @@
+import Events from "./components/Events";
 import HorizontalScrollCarousel from "./components/HorizontalScroller/HorizontalScrollCarousel";
 import Section from "./components/Section";
+import StickyEnquiriesButton from "./StickyEnquiriesButton";
 
 export default function Home() {
   return (
@@ -9,10 +11,7 @@ export default function Home() {
         className="section section-hero"
         backgroundClassName="background"
         backgroundImage="/assets/heroBg.webp"
-        /* backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }} */
-        contentStyle={{
-          zIndex: "1",
-        }}
+        contentStyle={{ zIndex: "1" }}
       >
         <h1 style={{ color: "white" }}>
           We Bring <span>Ideas</span> to Life
@@ -25,7 +24,12 @@ export default function Home() {
         </p>
         <button className="cta">Let’s Create Together</button>
       </Section>
-      <HorizontalScrollCarousel id="services" />
+      <Section>
+        <HorizontalScrollCarousel id="services" title="Services" />
+      </Section>
+      <Section id="works">
+        <Events />
+      </Section>
       <Section id="contact" className="section">
         <h2>Visit Us</h2>
         <p>
@@ -50,6 +54,8 @@ export default function Home() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </Section>
+
+      <StickyEnquiriesButton />
     </>
   );
 }
