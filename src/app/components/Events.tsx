@@ -14,23 +14,22 @@ const Events: React.FC = () => {
       id: 1,
       title: "Junior Voice Hunt",
       description: "Sample Description 1",
-      images: [
-        "../assets/event1.jpg",
-        "../assets/section1.jpg",
-        "../assets/section2.jpg",
-      ],
-      date: "April 19th, 2024",
+      images: ["../assets/jvh.jpg"],
+      date: "April 19th, 2025",
     },
     {
       id: 2,
-      title: "Sample Event 2",
+      title: "Grand Art Hunt",
       description: "Sample Description 2",
-      images: [
-        "../assets/event2.jpg",
-        "../assets/section3.jpg",
-        "../assets/section4.jpg",
-      ],
-      date: "Month Day, 2023",
+      images: ["../assets/gah.jpg"],
+      date: "May 2nd, 2025",
+    },
+    {
+      id: 3,
+      title: "Crown 64",
+      description: "",
+      images: ["../assets/crown64.jpg"],
+      date: "October 26th, 2025",
     },
   ];
 
@@ -73,7 +72,7 @@ const Events: React.FC = () => {
   return (
     <div className="section">
       <div style={{ maxWidth: "1200px", width: "100%" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>Our Works</h1>
+        <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Our Works</h2>
 
         <p style={{ textAlign: "center", marginBottom: "3rem", opacity: 0.9 }}>
           Showcasing our expertise in event production, talent competitions, and
@@ -84,7 +83,7 @@ const Events: React.FC = () => {
 
         {/* Year Filter */}
         <div style={{ marginBottom: "2rem", textAlign: "right" }}>
-          <label style={{ marginRight: "10px" }}>Filter by Year:</label>
+          <label style={{ marginRight: "10px" }}>Year:</label>
           <select
             value={selectedYear}
             onChange={(e) =>
@@ -107,7 +106,7 @@ const Events: React.FC = () => {
           items={filteredItems}
           onItemClick={handleCardClick}
           showDate={true}
-          actionText="Read More →"
+          actionText="Click to View Photos/Videos →"
         />
 
         {/* Carousel Modal */}

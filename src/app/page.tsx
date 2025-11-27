@@ -1,5 +1,6 @@
 import Events from "./components/Events";
 import HorizontalScrollCarousel from "./components/HorizontalScroller/HorizontalScrollCarousel";
+import { Example } from "./components/MouseImageTrail";
 import Section from "./components/Section";
 import StickyEnquiriesButton from "./StickyEnquiriesButton";
 
@@ -25,12 +26,17 @@ export default function Home() {
         <button className="cta">Let’s Create Together</button>
       </Section>
       <Section>
-        <HorizontalScrollCarousel id="services" title="Services" />
+        <HorizontalScrollCarousel id="services" />
       </Section>
+      {/* <Example /> */}
       <Section id="works">
         <Events />
       </Section>
-      <Section id="contact" className="section">
+      <Section
+        id="contact"
+        className="section"
+        style={{ background: "lab(7.78201% -.0000149012 0)" }}
+      >
         <h2>Visit Us</h2>
         <p>
           📍 Land Mark, No. 6, First Floor, Sri Shopping Complex Vasu Nagar 2nd

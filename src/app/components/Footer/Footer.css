@@ -1,7 +1,7 @@
 .footer {
-  background: #fff;
+  background: #0f0f0f; /* Deep black */
   padding: 1.5rem 0;
-  color: #6b7280;
+  color: #d1d5db; /* Light gray text */
   font-size: 0.875rem;
   text-align: center;
   user-select: none;
@@ -23,16 +23,16 @@
 }
 
 .social-links a {
-  color: #6b7280;
+  color: #d1d5db; /* Light gray icons */
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
   font-size: 1.2rem;
 }
 
 .social-links a:hover {
-  opacity: 0.7;
+  color: rgb(255, 70, 70); /* Match the red accent */
+  opacity: 0.85;
 }
-
 
 @media (max-width: 768px) {
   .footer-content {

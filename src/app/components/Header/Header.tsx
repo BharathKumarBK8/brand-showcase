@@ -28,8 +28,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
         {/* Normal navigation */}
         <nav className="nav-links">
           <span onClick={() => handleNavigate("hero")}>Home</span>
-          <span onClick={() => handleNavigate("works")}>Works</span>
           <span onClick={() => handleNavigate("services")}>Services</span>
+          <span onClick={() => handleNavigate("works")}>Works</span>
           <span onClick={() => handleNavigate("contact")}>Contact</span>
         </nav>
 
