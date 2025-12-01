@@ -71,3 +71,22 @@
     justify-content: center !important;
   }
 }
+/* Desktop fullscreen styles */
+@media (min-width: 769px) {
+  .modalWrapper.p-component {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .modalWrapper .p-dialog-content {
+    height: calc(100vh - 60px) !important;
+    padding: 2rem !important;
+  }
+}

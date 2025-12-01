@@ -19,14 +19,19 @@ export default function Home() {
         </h1>
         <p style={{ color: "whitesmoke" }}>
           At <strong>R2 Media</strong>, we craft unforgettable experiences
-          through <strong>Event Management</strong>,{" "}
+          through
+          <br /> <strong>Event Management</strong>,{" "}
           <strong>Video Production</strong>, <strong>Photography</strong>, and{" "}
           <strong>Creative Advertising</strong>.
         </p>
         <button className="cta">Let’s Create Together</button>
       </Section>
       <Section>
-        <HorizontalScrollCarousel id="services" title="SERVICES" />
+        <HorizontalScrollCarousel
+          id="services"
+          title=" 
+        SERVICES"
+        />
       </Section>
       {/* <Example /> */}
       <Section id="works">

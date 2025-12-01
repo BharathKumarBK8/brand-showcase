@@ -41,7 +41,12 @@ const HorizontalScrollCarousel = ({
             absolute left-8 top-1/2 -translate-y-1/2
             text-4xl font-bold text-gold md:text-5xl lg:text-6xl
           "
-          style={{ opacity: titleOpacity }}
+          style={{
+            opacity: titleOpacity,
+            fontWeight: "900",
+            lineHeight: "1.1",
+            letterSpacing: "-0.05em",
+          }}
         >
           {title}
         </motion.h2>

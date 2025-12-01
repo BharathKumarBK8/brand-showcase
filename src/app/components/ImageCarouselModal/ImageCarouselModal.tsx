@@ -35,7 +35,6 @@ const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
       blockScroll={true}
       draggable={false}
       className="modalWrapper"
-      style={{ width: "100vw", height: "100dvh" }}
     >
       <Carousel
         value={images}

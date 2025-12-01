@@ -113,8 +113,8 @@ const Events: React.FC = () => {
 
   return (
     <div className="section">
-      <div style={{ maxWidth: "1200px", width: "100%" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Our Works</h2>
+      <div>
+        <h2>OUR WORKS</h2>
 
         <p style={{ textAlign: "center", marginBottom: "3rem", opacity: 0.9 }}>
           Showcasing our expertise in event production, talent competitions, and
