@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useMemo } from "react";
+import { Dropdown } from "primereact/dropdown";
 import GalleryGrid, {
   GalleryItem,
 } from "../components/GalleryGrid/GalleryGrid";
@@ -14,21 +15,50 @@ const Events: React.FC = () => {
       id: 1,
       title: "Junior Voice Hunt",
       description: "Sample Description 1",
-      images: ["../assets/jvh.jpg"],
+      images: [
+        "../assets/jvh.jpg",
+        "../assets/JVH-1.jpg",
+        "../assets/JVH-2.jpg",
+        "../assets/JVH-3.jpg",
+        "../assets/JVH-4.jpg",
+        "../assets/JVH-5.jpg",
+        "../assets/JVH-6.jpg",
+        "../assets/JVH-7.jpg",
+      ],
       date: "April 19th, 2025",
     },
     {
       id: 2,
       title: "Grand Art Hunt",
       description: "Sample Description 2",
-      images: ["../assets/gah.jpg"],
+      images: [
+        "../assets/gah.jpg",
+        "../assets/GAH-1.webp",
+        "../assets/GAH-2.webp",
+        "../assets/GAH-3.webp",
+        "../assets/GAH-4.webp",
+        "../assets/GAH-5.webp",
+        "../assets/GAH-6.webp",
+      ],
       date: "May 2nd, 2025",
     },
     {
       id: 3,
       title: "Crown 64",
       description: "",
-      images: ["../assets/crown64.jpg"],
+      images: [
+        "../assets/crown64.jpg",
+        "../assets/C64-1.webp",
+        "../assets/C64-2.webp",
+        "../assets/C64-3.webp",
+        "../assets/C64-4.webp",
+        "../assets/C64-5.webp",
+        "../assets/C64-6.webp",
+        "../assets/C64-7.webp",
+        "../assets/C64-8.webp",
+        "../assets/C64-9.webp",
+        "../assets/C64-10.webp",
+      ],
       date: "October 26th, 2025",
     },
   ];
@@ -53,6 +83,18 @@ const Events: React.FC = () => {
     });
     return Array.from(set).sort((a, b) => b - a);
   }, [eventItems]);
+
+  /** Dropdown options */
+  const yearOptions = useMemo(
+    () => [
+      { label: "All", value: "all" },
+      ...availableYears.map((year) => ({
+        label: year.toString(),
+        value: year,
+      })),
+    ],
+    [availableYears]
+  );
 
   /** Filter the items by year */
   const filteredItems = useMemo(() => {
@@ -84,22 +126,11 @@ const Events: React.FC = () => {
         {/* Year Filter */}
         <div style={{ marginBottom: "2rem", textAlign: "right" }}>
           <label style={{ marginRight: "10px" }}>Year:</label>
-          <select
+          <Dropdown
             value={selectedYear}
-            onChange={(e) =>
-              setSelectedYear(
-                e.target.value === "all" ? "all" : Number(e.target.value)
-              )
-            }
-            style={{ padding: "6px 12px", borderRadius: "4px" }}
-          >
-            <option value="all">All</option>
-            {availableYears.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+            options={yearOptions}
+            onChange={(e) => setSelectedYear(e.value)}
+          />
         </div>
 
         <GalleryGrid
@@ -112,6 +143,7 @@ const Events: React.FC = () => {
         {/* Carousel Modal */}
         {selectedImages && (
           <ImageCarouselModal
+            visible={true}
             images={selectedImages}
             onClose={() => setSelectedImages(null)}
           />

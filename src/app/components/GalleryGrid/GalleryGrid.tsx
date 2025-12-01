@@ -38,9 +38,9 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({
           onClick={() => onItemClick?.(item.id)}
         >
           {/* Top Section */}
-          <div className="gallery-top">
+          {/*           <div className="gallery-top">
             <h3>{item.title}</h3>
-          </div>
+          </div> */}
 
           {/* Cover Image */}
           <div className="gallery-image-wrapper">

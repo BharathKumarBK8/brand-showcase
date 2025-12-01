@@ -1,49 +1,52 @@
-// components/ImageCarouselModal/ImageCarouselModal.tsx
-
-import React, { useEffect } from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React from "react";
+import { Dialog } from "primereact/dialog";
+import { Carousel } from "primereact/carousel";
 import "./ImageCarouselModal.css";
 
 interface ImageCarouselModalProps {
   images: string[];
+  visible: boolean;
   onClose: () => void;
 }
 
 const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
   images,
+  visible,
   onClose,
 }) => {
-  // Prevent body from scrolling when modal is open
-  useEffect(() => {
-    document.body.classList.add("modal-open");
-    document.body.style.overflow = "hidden"; // Prevent scrolling
-    return () => {
-      document.body.classList.remove("modal-open");
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  const imageTemplate = (image: string) => (
+    <img
+      src={image}
+      alt="Gallery image"
+      style={{
+        maxHeight: "70dvh",
+        objectFit: "contain",
+        width: "100%",
+        borderRadius: "8px",
+      }}
+    />
+  );
 
   return (
-    <div className="carousel-modal-overlay">
-      <button className="close-button" onClick={onClose}>
-        &times;
-      </button>
-      <div className="carousel-container">
-        <Carousel
-          showThumbs={false}
-          infiniteLoop
-          useKeyboardArrows
-          showStatus={false}
-        >
-          {images.map((src, index) => (
-            <div key={index} className="carousel-slide">
-              <img src={src} alt={`Slide ${index + 1}`} />
-            </div>
-          ))}
-        </Carousel>
-      </div>
-    </div>
+    <Dialog
+      visible={visible}
+      onHide={onClose}
+      modal
+      blockScroll={true}
+      draggable={false}
+      className="modalWrapper"
+      style={{ width: "100vw", height: "100dvh" }}
+    >
+      <Carousel
+        value={images}
+        itemTemplate={imageTemplate}
+        numVisible={1}
+        numScroll={1}
+        circular
+        showNavigators
+        showIndicators
+      />
+    </Dialog>
   );
 };
 

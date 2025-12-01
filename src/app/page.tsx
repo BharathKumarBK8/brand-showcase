@@ -26,7 +26,7 @@ export default function Home() {
         <button className="cta">Let’s Create Together</button>
       </Section>
       <Section>
-        <HorizontalScrollCarousel id="services" />
+        <HorizontalScrollCarousel id="services" title="SERVICES" />
       </Section>
       {/* <Example /> */}
       <Section id="works">
