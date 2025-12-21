@@ -5,6 +5,7 @@ import GalleryGrid, {
   GalleryItem,
 } from "../components/GalleryGrid/GalleryGrid";
 import ImageCarouselModal from "../components/ImageCarouselModal/ImageCarouselModal";
+import { LuClapperboard } from "react-icons/lu";
 
 const Events: React.FC = () => {
   const [selectedImages, setSelectedImages] = useState<string[] | null>(null);
@@ -114,14 +115,26 @@ const Events: React.FC = () => {
   return (
     <div className="section">
       <div>
-        <h2>OUR WORKS</h2>
-
-        <p style={{ textAlign: "center", marginBottom: "3rem", opacity: 0.9 }}>
-          Showcasing our expertise in event production, talent competitions, and
-          documentary filmmaking. From dynamic live events to compelling
-          storytelling, we bring your vision to life with creativity and
-          professionalism.
-        </p>
+        <div className="section-content">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <LuClapperboard size={48} className="icon" />
+            <h2>OUR WORKS</h2>
+          </div>
+          <p
+            style={{ textAlign: "center", marginBottom: "3rem", opacity: 0.9 }}
+          >
+            Showcasing our expertise in event production, talent competitions,
+            and documentary filmmaking. From dynamic live events to compelling
+            storytelling, we bring your vision to life with creativity and
+            professionalism.
+          </p>
+        </div>
 
         {/* Year Filter */}
         <div style={{ marginBottom: "2rem", textAlign: "right" }}>

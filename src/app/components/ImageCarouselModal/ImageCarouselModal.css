@@ -1,7 +1,7 @@
 /* Scoped Dialog styling */
 .modalWrapper .p-dialog-header {
   width: 100% !important;
-  background: rgba(0, 0, 0, 0.9) !important;
+  background: black !important;
   border: none !important;
   border-radius: 0 !important;
   padding: 1rem 1.5rem !important;

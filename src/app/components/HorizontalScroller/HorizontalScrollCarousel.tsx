@@ -1,19 +1,32 @@
 "use client";
 
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState, ReactNode } from "react";
 import Card, { cards } from "./Card";
 
 interface HorizontalScrollCarouselProps {
   id?: string;
   title?: string;
+  description?: string;
+  icon?: ReactNode; // <-- Accept JSX element as prop
 }
 
 const HorizontalScrollCarousel = ({
   id,
   title,
+  description,
+  icon,
 }: HorizontalScrollCarouselProps) => {
   const targetRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -21,11 +34,22 @@ const HorizontalScrollCarousel = ({
   });
 
   // Horizontal scroll animation
-  const x = useTransform(scrollYProgress, [0, 1], ["20%", "-85%"]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? ["1%", "-90%"] : ["20%", "-85%"]
+  );
 
-  // Fade out title once first card is past a certain horizontal scroll
-  // Assuming first card roughly moves 15% of scroll width
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
+  const contentX = useTransform(
+    scrollYProgress,
+    [0, isMobile ? 0.25 : 0.35],
+    ["0%", isMobile ? "-30%" : "-50%"]
+  );
+  const contentOpacity = useTransform(
+    scrollYProgress,
+    [0, isMobile ? 0.25 : 0.35],
+    [1, 0]
+  );
 
   return (
     <section
@@ -33,23 +57,15 @@ const HorizontalScrollCarousel = ({
       ref={targetRef}
       className="relative h-[300vh] bg-neutral-900"
     >
-      {/* ONE sticky container */}
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        {/* Title pinned left-middle */}
-        <motion.h2
-          className="
-            absolute left-8 top-1/2 -translate-y-1/2
-            text-4xl font-bold text-gold md:text-5xl lg:text-6xl
-          "
-          style={{
-            opacity: titleOpacity,
-            fontWeight: "900",
-            lineHeight: "1.1",
-            letterSpacing: "-0.05em",
-          }}
+        <motion.div
+          style={{ x: contentX, opacity: contentOpacity, margin: "2rem" }}
         >
-          {title}
-        </motion.h2>
+          {/* Render the icon if provided */}
+          {icon && <div className="mb-4">{icon}</div>}
+          <h2>{title}</h2>
+          <p style={{ margin: "2rem" }}>{description}</p>
+        </motion.div>
 
         {/* Horizontal scroll cards */}
         <motion.div style={{ x }} className="flex gap-4 px-8">

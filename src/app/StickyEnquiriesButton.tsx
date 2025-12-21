@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Dialog } from "primereact/dialog";
 import EnquiryForm from "./components/GenerealEnquiryForm";
-import Header from "./components/Header/Header";
+import { PiCamera } from "react-icons/pi";
 
 const StickyButton = () => {
   const [showText, setShowText] = useState(true);
@@ -55,7 +55,6 @@ const StickyButton = () => {
           </AnimatePresence>
         </motion.button>
       </div>
-
       {/* PrimeReact Dialog for General Enquiry Form */}
       <Dialog
         visible={formOpen}
@@ -71,16 +70,26 @@ const StickyButton = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "0.5rem",
+              gap: "0.75rem",
               justifyContent: "center",
             }}
           >
-            <img
-              src="../assets/logo.webp"
-              alt="Logo"
-              style={{ width: 50, height: 50 }}
-            />
-            <span>Enquiries</span>
+            <PiCamera size={36} color="#cd0001" />{" "}
+            {/* red accent to match brand */}
+            <div style={{ textAlign: "center" }}>
+              <span style={{ fontSize: "1.5rem", fontWeight: 600 }}>
+                Get Started With Us
+              </span>
+              <p
+                style={{
+                  fontSize: "0.85rem",
+                  color: "rgba(255,255,255,0.7)",
+                  margin: 0,
+                }}
+              >
+                Tell us about your project and we’ll bring it to life
+              </p>
+            </div>
           </div>
         }
       >
