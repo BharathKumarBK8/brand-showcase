@@ -4,10 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Dialog } from "primereact/dialog";
 import EnquiryForm from "./components/GenerealEnquiryForm";
 import { PiCamera } from "react-icons/pi";
+import { useEnquiryForm } from "./context/EnquiryFormContext";
 
 const StickyButton = () => {
   const [showText, setShowText] = useState(true);
-  const [formOpen, setFormOpen] = useState(false);
+  const { isOpen, openForm, closeForm } = useEnquiryForm();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowText(false), 3000);
@@ -16,10 +17,9 @@ const StickyButton = () => {
 
   return (
     <>
-      {/* Sticky button */}
       <div style={{ position: "fixed", bottom: 20, right: 20, zIndex: 1000 }}>
         <motion.button
-          onClick={() => setFormOpen(true)}
+          onClick={openForm}
           style={{
             display: "flex",
             alignItems: "center",
@@ -55,11 +55,10 @@ const StickyButton = () => {
           </AnimatePresence>
         </motion.button>
       </div>
-      {/* PrimeReact Dialog for General Enquiry Form */}
       <Dialog
-        visible={formOpen}
+        visible={isOpen}
         modal
-        onHide={() => setFormOpen(false)}
+        onHide={closeForm}
         className="enquiry-form-dialog"
         blockScroll
         resizable={false}
@@ -74,8 +73,7 @@ const StickyButton = () => {
               justifyContent: "center",
             }}
           >
-            <PiCamera size={36} color="#cd0001" />{" "}
-            {/* red accent to match brand */}
+            <PiCamera size={36} color="#cd0001" />
             <div style={{ textAlign: "center" }}>
               <span style={{ fontSize: "1.5rem", fontWeight: 600 }}>
                 Get Started With Us
@@ -87,7 +85,7 @@ const StickyButton = () => {
                   margin: 0,
                 }}
               >
-                Tell us about your project and we’ll bring it to life
+                Tell us about your project and we'll bring it to life
               </p>
             </div>
           </div>

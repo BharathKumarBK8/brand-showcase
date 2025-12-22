@@ -1,12 +1,16 @@
+"use client";
 import Events from "./components/Events";
 import HorizontalScrollCarousel from "./components/HorizontalScroller/HorizontalScrollCarousel";
 import Section from "./components/Section";
 import StickyEnquiriesButton from "./StickyEnquiriesButton";
+import { useEnquiryForm } from "./context/EnquiryFormContext";
 import { MdLayers } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function Home() {
+  const { openForm } = useEnquiryForm();
+
   return (
     <>
       <Section
@@ -26,7 +30,9 @@ export default function Home() {
           <strong>Video Production</strong>, <strong>Photography</strong>, and{" "}
           <strong>Creative Advertising</strong>.
         </p>
-        <button className="cta">Let’s Create Together</button>
+        <button className="cta" onClick={openForm}>
+          Let's Create Together
+        </button>
       </Section>
       <Section>
         <HorizontalScrollCarousel
@@ -37,7 +43,6 @@ export default function Home() {
           icon={<MdLayers className="icon" />}
         />
       </Section>
-      {/* <Example /> */}
       <Section id="works">
         <Events />
       </Section>
