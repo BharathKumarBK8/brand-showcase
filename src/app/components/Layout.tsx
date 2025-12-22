@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { EnquiryFormProvider } from "../context/EnquiryFormContext";
@@ -10,14 +11,13 @@ const scrollToSection = (id: string) => {
   }
 };
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   return (
     <EnquiryFormProvider>
-      <Header onNavigate={scrollToSection} />
+      {isHomePage && <Header onNavigate={scrollToSection} />}
       {children}
       <Footer />
     </EnquiryFormProvider>
