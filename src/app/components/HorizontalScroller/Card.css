@@ -10,6 +10,13 @@
   flex-direction: column;
   justify-content: flex-end;
   color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card-bg {
@@ -19,11 +26,24 @@
   background-position: center;
   z-index: 0;
   opacity: 0.6;
+  border-radius: 20px;
+  transition: opacity 0.3s;
 }
 
-.card-title,
+.card:hover .card-bg {
+  opacity: 0.8;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+}
+
 .card-description {
-  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.5;
   z-index: 1;
 }
 
@@ -31,5 +51,14 @@
 .card{
         width: 20rem;
         height: 20rem;
-}    
+      }    
+
+      .card-title {
+    font-size: 1.2rem;
+      }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
 }

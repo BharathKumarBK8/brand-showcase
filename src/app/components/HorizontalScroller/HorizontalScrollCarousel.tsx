@@ -8,7 +8,7 @@ interface HorizontalScrollCarouselProps {
   id?: string;
   title?: string;
   description?: string;
-  icon?: ReactNode; // <-- Accept JSX element as prop
+  icon?: ReactNode;
 }
 
 const HorizontalScrollCarousel = ({

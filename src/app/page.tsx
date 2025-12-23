@@ -24,11 +24,10 @@ export default function Home() {
           We Bring <span>Ideas</span> to Life
         </h1>
         <p style={{ color: "whitesmoke" }}>
-          At <strong>R2 Media</strong>, we craft unforgettable experiences
-          through
-          <br /> <strong>Event Management</strong>,{" "}
-          <strong>Video Production</strong>, <strong>Photography</strong>, and{" "}
-          <strong>Creative Advertising</strong>.
+          At <strong>R2 Media</strong>, we transform ideas into unforgettable
+          experiences through<strong> stunning visuals</strong>,
+          <strong> captivating videos</strong>, and
+          <strong> seamless event productions</strong>.
         </p>
         <button className="cta" onClick={openForm}>
           Let's Create Together
