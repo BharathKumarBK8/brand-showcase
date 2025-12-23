@@ -1,4 +1,5 @@
 import "./Card.css";
+import { motion } from "framer-motion";
 
 export type CardType = {
   url: string;
@@ -9,7 +10,7 @@ export type CardType = {
 
 const Card = ({ card }: { card: CardType }) => {
   return (
-    <div className="card">
+    <motion.div className="card" whileHover={{ scale: 1.05 }}>
       <p className="card-title">{card.title}</p>
 
       <div
@@ -18,7 +19,7 @@ const Card = ({ card }: { card: CardType }) => {
       ></div>
 
       <p className="card-description">{card.description}</p>
-    </div>
+    </motion.div>
   );
 };
 
@@ -46,9 +47,9 @@ export const cards: CardType[] = [
   {
     id: 4,
     url: "/assets/service4.jpg",
-    title: "Product Shoots",
+    title: "Product & Advertisement Shoots",
     description:
-      "Showcasing your products with creative, eye-catching visuals.",
+      "Capturing your products & creating compelling ads that grab attention and drive results.",
   },
   {
     id: 5,
@@ -56,13 +57,6 @@ export const cards: CardType[] = [
     title: "Branding",
     description:
       "Crafting unique brand identities that leave a lasting impression.",
-  },
-  {
-    id: 6,
-    url: "",
-    title: "Advertisement Shoots",
-    description:
-      "Creating compelling ads that capture attention and drive results.",
   },
   {
     id: 7,

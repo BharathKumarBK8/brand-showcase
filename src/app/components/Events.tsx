@@ -129,10 +129,11 @@ const Events: React.FC = () => {
           <p
             style={{ textAlign: "center", marginBottom: "3rem", opacity: 0.9 }}
           >
-            Showcasing our expertise in event production, talent competitions,
-            and documentary filmmaking. From dynamic live events to compelling
-            storytelling, we bring your vision to life with creativity and
-            professionalism.
+            We bring ideas to life with creativity, passion, and precision. From
+            dynamic live events to captivating campaigns and compelling stories,
+            our productions inspire, engage, and leave a lasting impression.
+            <br />
+            Every project reflects our commitment to excellence and originality.
           </p>
         </div>
 

@@ -18,14 +18,22 @@ const HorizontalScrollCarousel = ({
   icon,
 }: HorizontalScrollCarouselProps) => {
   const targetRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(
+    "desktop"
+  );
 
   // Detect screen size
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const updateScreenSize = () => {
+      const width = window.innerWidth;
+      if (width <= 768) setScreenSize("mobile");
+      else if (width <= 1024) setScreenSize("tablet");
+      else setScreenSize("desktop");
+    };
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -37,17 +45,29 @@ const HorizontalScrollCarousel = ({
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    isMobile ? ["1%", "-90%"] : ["20%", "-85%"]
+    screenSize === "mobile"
+      ? ["1%", "-100%"]
+      : screenSize === "tablet"
+      ? ["15%", "-100%"]
+      : ["20%", "-85%"]
   );
 
   const contentX = useTransform(
     scrollYProgress,
-    [0, isMobile ? 0.25 : 0.35],
-    ["0%", isMobile ? "-30%" : "-50%"]
+    [0, screenSize === "mobile" ? 0.25 : screenSize === "tablet" ? 0.3 : 0.35],
+    [
+      "0%",
+      screenSize === "mobile"
+        ? "-30%"
+        : screenSize === "tablet"
+        ? "-40%"
+        : "-50%",
+    ]
   );
+
   const contentOpacity = useTransform(
     scrollYProgress,
-    [0, isMobile ? 0.25 : 0.35],
+    [0, screenSize === "mobile" ? 0.25 : screenSize === "tablet" ? 0.3 : 0.35],
     [1, 0]
   );
 
@@ -61,7 +81,6 @@ const HorizontalScrollCarousel = ({
         <motion.div
           style={{ x: contentX, opacity: contentOpacity, margin: "2rem" }}
         >
-          {/* Render the icon if provided */}
           {icon && <div className="mb-4">{icon}</div>}
           <h2>{title}</h2>
           <p style={{ margin: "2rem" }}>{description}</p>
