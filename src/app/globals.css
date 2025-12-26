@@ -274,3 +274,59 @@ p{
   color: white;
   font-weight: 600;
 }
+/* PrimeReact Toast Styles */
+.p-toast {
+  z-index: 9999;
+}
+
+.p-toast .p-toast-message {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.p-toast .p-toast-message.p-toast-message-success {
+  border-left: 4px solid rgb(34, 53, 106);
+}
+
+.p-toast .p-toast-message.p-toast-message-error {
+  border-left: 4px solid rgb(205, 0, 1);
+}
+
+.p-toast .p-toast-message .p-toast-message-content {
+  color: white;
+  padding: 1rem;
+}
+
+.p-toast .p-toast-message .p-toast-summary {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.p-toast .p-toast-message .p-toast-detail {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.p-toast .p-toast-message .p-toast-icon-close {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.p-toast .p-toast-message .p-toast-icon-close:hover {
+  color: white;
+}
+
+.p-dialog .p-dialog-header-icon {
+  color: rgba(255, 255, 255, 0.7);
+  width: 2rem;
+  height: 2rem;
+}
+
+.p-dialog .p-dialog-header-icon:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}

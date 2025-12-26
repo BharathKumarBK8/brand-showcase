@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import "./GeneralEnquiryForm.css"; // Keep your existing colours
+import { Toast } from "primereact/toast";
+import "./GeneralEnquiryForm.css";
 
 const EnquiryForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +12,8 @@ const EnquiryForm: React.FC = () => {
     email: "",
     message: "",
   });
-
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const toast = useRef<Toast>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,25 +22,51 @@ const EnquiryForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
 
-    // Simulate async submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setFormData({ name: "", phone: "", email: "", message: "" });
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.current?.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Message sent successfully! We'll get back to you soon.",
+          life: 5000,
+        });
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        toast.current?.show({
+          severity: "error",
+          summary: "Error",
+          detail: "Failed to send message. Please try again.",
+          life: 5000,
+        });
+      }
+    } catch (error) {
+      toast.current?.show({
+        severity: "error",
+        summary: "Network Error",
+        detail: "Please check your connection and try again.",
+        life: 5000,
+      });
+    } finally {
       setSubmitting(false);
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
-    }, 1500);
+    }
   };
 
   return (
     <div className="enquiry-form">
-      <h1>Got a question? Let’s chat!</h1>
+      <Toast ref={toast} />
+      <h1>Got a question? Let's chat!</h1>
       <p style={{ textAlign: "center", color: "rgba(255,255,255,0.7)" }}>
-        Fill out the form below and we’ll get back to you as soon as possible.
+        Fill out the form below and we'll get back to you as soon as possible.
       </p>
 
       <form
@@ -55,16 +81,15 @@ const EnquiryForm: React.FC = () => {
           required
           className="animated-input"
         />
-
         <InputText
           name="email"
+          type="email"
           placeholder="Email Address"
           value={formData.email}
           onChange={handleChange}
           required
           className="animated-input"
         />
-
         <InputText
           name="phone"
           placeholder="Phone Number"
@@ -73,7 +98,6 @@ const EnquiryForm: React.FC = () => {
           required
           className="animated-input"
         />
-
         <InputTextarea
           name="message"
           placeholder="Your Message"
@@ -83,26 +107,12 @@ const EnquiryForm: React.FC = () => {
           required
           className="animated-input"
         />
-
         <Button
           type="submit"
           label={submitting ? "Sending..." : "Send Message"}
           className="submit-btn"
           disabled={submitting}
         />
-
-        {success && (
-          <div
-            style={{
-              color: "rgb(205, 0, 1)",
-              fontWeight: "bold",
-              textAlign: "center",
-              marginTop: "0.5rem",
-            }}
-          >
-            Thank you! We’ll reply soon 😊
-          </div>
-        )}
       </form>
     </div>
   );
