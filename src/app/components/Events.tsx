@@ -15,7 +15,6 @@ const Events: React.FC = () => {
     {
       id: 1,
       title: "Junior Voice Hunt",
-      description: "Sample Description 1",
       images: [
         "../assets/jvh.jpg",
         "../assets/JVH-1.jpg",
@@ -31,7 +30,6 @@ const Events: React.FC = () => {
     {
       id: 2,
       title: "Grand Art Hunt",
-      description: "Sample Description 2",
       images: [
         "../assets/gah.jpg",
         "../assets/GAH-1.webp",
@@ -46,7 +44,6 @@ const Events: React.FC = () => {
     {
       id: 3,
       title: "Crown 64",
-      description: "",
       images: [
         "../assets/crown64.jpg",
         "../assets/C64-1.webp",
@@ -150,7 +147,6 @@ const Events: React.FC = () => {
         <GalleryGrid
           items={filteredItems}
           onItemClick={handleCardClick}
-          showDate={true}
           actionText="Click to View Photos/Videos →"
         />
 
