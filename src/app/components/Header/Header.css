@@ -57,6 +57,11 @@
   display: flex;
   align-items: center;
 }
+.logo-img {
+  height: 6.25rem;
+  width: auto;
+  cursor: pointer;
+}
 
 .social-links {
   display: flex;
@@ -135,5 +140,8 @@
     left: 5rem;
     border-radius: 5rem;
     top: 1rem;
+  }
+  .logo-img{
+    height: 5rem;
   }
 }

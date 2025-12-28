@@ -48,8 +48,8 @@ const HorizontalScrollCarousel = ({
     screenSize === "mobile"
       ? ["0%", "-99%"]
       : screenSize === "tablet"
-      ? ["10%", "-110%"]
-      : ["20%", "-100%"]
+      ? ["10%", "-92%"]
+      : ["10%", "-83.5%"]
   );
 
   const contentX = useTransform(scrollYProgress, [0, 0.3], ["0%", "-50%"]);

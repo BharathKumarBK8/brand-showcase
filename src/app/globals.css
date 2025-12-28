@@ -194,6 +194,21 @@ p{
     font-size: .9rem;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section h2 {
+    font-size: 5rem;
+  }
+  h2{
+    font-size: 5rem;
+  }
+  .section p {
+    font-size: 1rem;
+  }
+  p{
+    font-size: 1rem;
+  }
+}
 /* ===== Scrollbar for WebKit browsers (Chrome, Safari, Edge) ===== */
 ::-webkit-scrollbar {
   width: 12px;      /* Vertical scrollbar width */

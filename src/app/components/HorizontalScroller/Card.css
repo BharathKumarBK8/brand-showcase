@@ -11,7 +11,7 @@
   justify-content: flex-end;
   color: white;
   transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
+  cursor: initial;
 }
 
 .card-bg {

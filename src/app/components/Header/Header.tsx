@@ -19,7 +19,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           <img
             src="../../assets/logo.webp"
             className="logo-img"
-            style={{ height: 100, cursor: "pointer" }}
             alt="R2 Media Logo"
             onClick={() => handleNavigate("hero")}
           />
