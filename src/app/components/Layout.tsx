@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { EnquiryFormProvider } from "../context/EnquiryFormContext";
+import LenisProvider from "../LenisProvider";
 
 const scrollToSection = (id: string) => {
   const section = document.getElementById(id);
@@ -16,10 +17,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const isHomePage = pathname === "/";
 
   return (
-    <EnquiryFormProvider>
-      {isHomePage && <Header onNavigate={scrollToSection} />}
-      {children}
-      <Footer />
-    </EnquiryFormProvider>
+    <LenisProvider>
+      <EnquiryFormProvider>
+        {isHomePage && <Header onNavigate={scrollToSection} />}
+        {children}
+        <Footer />
+      </EnquiryFormProvider>
+    </LenisProvider>
   );
 }

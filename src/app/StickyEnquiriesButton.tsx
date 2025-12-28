@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { Dialog } from "primereact/dialog";
 import EnquiryForm from "./components/GenerealEnquiryForm";
-import { PiInfoThin } from "react-icons/pi";
 import { useEnquiryForm } from "./context/EnquiryFormContext";
 
 const StickyButton = () => {
@@ -116,7 +115,7 @@ const StickyButton = () => {
               justifyContent: "center",
             }}
           >
-            <PiInfoThin size={36} color="#cd0001" />
+            <i className="bi bi-info-circle" style={{ color: "#cd0001" }} />
             <div style={{ textAlign: "center" }}>
               <span style={{ fontSize: "1.5rem", fontWeight: 600 }}>
                 Get Started With Us

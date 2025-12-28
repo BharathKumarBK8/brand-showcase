@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll, useSpring } from "framer-motion";
 import { useRef, useEffect, useState, ReactNode } from "react";
 import Card, { cards } from "./Card";
 
@@ -22,7 +22,6 @@ const HorizontalScrollCarousel = ({
     "desktop"
   );
 
-  // Detect screen size
   useEffect(() => {
     const updateScreenSize = () => {
       const width = window.innerWidth;
@@ -41,10 +40,9 @@ const HorizontalScrollCarousel = ({
     offset: ["start start", "end end"],
   });
 
-  // Horizontal scroll animation
-  const x = useTransform(
+  const xRaw = useTransform(
     scrollYProgress,
-    [0, 0.95], // ⬅️ animation finishes at 75%
+    [0, 0.95],
     screenSize === "mobile"
       ? ["0%", "-99%"]
       : screenSize === "tablet"
@@ -52,12 +50,13 @@ const HorizontalScrollCarousel = ({
       : ["10%", "-83.5%"]
   );
 
-  const contentX = useTransform(scrollYProgress, [0, 0.3], ["0%", "-50%"]);
+  const x = useSpring(xRaw, { damping: 30, stiffness: 100 });
 
+  const contentX = useTransform(scrollYProgress, [0, 0.3], ["0%", "-50%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
-    <section id={id} ref={targetRef} className="relative h-[300vh] bg-black">
+    <section id={id} ref={targetRef} className="relative h-[400vh] bg-black">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <motion.div
           style={{ x: contentX, opacity: contentOpacity, margin: "2rem" }}
@@ -67,7 +66,6 @@ const HorizontalScrollCarousel = ({
           <p style={{ margin: "2rem" }}>{description}</p>
         </motion.div>
 
-        {/* Horizontal scroll cards */}
         <motion.div style={{ x }} className="flex gap-4 px-8">
           {cards.map((card) => (
             <Card card={card} key={card.id} />

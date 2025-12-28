@@ -5,7 +5,6 @@ import GalleryGrid, {
   GalleryItem,
 } from "../components/GalleryGrid/GalleryGrid";
 import ImageCarouselModal from "../components/ImageCarouselModal/ImageCarouselModal";
-import { LuClapperboard } from "react-icons/lu";
 
 const Events: React.FC = () => {
   const [selectedImages, setSelectedImages] = useState<string[] | null>(null);
@@ -16,14 +15,14 @@ const Events: React.FC = () => {
       id: 1,
       title: "Junior Voice Hunt",
       images: [
-        "../assets/jvh.jpg",
-        "../assets/JVH-1.jpg",
-        "../assets/JVH-2.jpg",
-        "../assets/JVH-3.jpg",
-        "../assets/JVH-4.jpg",
-        "../assets/JVH-5.jpg",
-        "../assets/JVH-6.jpg",
-        "../assets/JVH-7.jpg",
+        "../assets/jvh.webp",
+        "../assets/JVH-1.webp",
+        "../assets/JVH-2.webp",
+        "../assets/JVH-3.webp",
+        "../assets/JVH-4.webp",
+        "../assets/JVH-5.webp",
+        "../assets/JVH-6.webp",
+        "../assets/JVH-7.webp",
       ],
       date: "April 19th, 2025",
     },
@@ -31,7 +30,7 @@ const Events: React.FC = () => {
       id: 2,
       title: "Grand Art Hunt",
       images: [
-        "../assets/gah.jpg",
+        "../assets/gah.webp",
         "../assets/GAH-1.webp",
         "../assets/GAH-2.webp",
         "../assets/GAH-3.webp",
@@ -45,7 +44,7 @@ const Events: React.FC = () => {
       id: 3,
       title: "Crown 64",
       images: [
-        "../assets/crown64.jpg",
+        "../assets/crown64.webp",
         "../assets/C64-1.webp",
         "../assets/C64-2.webp",
         "../assets/C64-3.webp",
@@ -120,7 +119,7 @@ const Events: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <LuClapperboard size={48} className="icon" />
+            <i className="bi bi-camera-reels icon" />
             <h2>OUR WORKS</h2>
           </div>
           <p

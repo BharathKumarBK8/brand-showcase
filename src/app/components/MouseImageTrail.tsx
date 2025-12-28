@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useAnimate } from "framer-motion";
 import { MouseEventHandler, ReactNode, useRef } from "react";
-import { FiMousePointer } from "react-icons/fi";
 
 export const Example = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -48,7 +47,7 @@ export const Example = () => {
     >
       <section className="grid h-screen w-full place-content-center bg-white">
         <p className="flex items-center gap-2 text-3xl font-bold uppercase text-black">
-          <FiMousePointer />
+          <i className="bi bi-cursor"></i>
           <span>{isMobile ? "Click on me" : "Hover me"}</span>
         </p>
       </section>

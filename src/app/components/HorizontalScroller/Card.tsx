@@ -28,39 +28,39 @@ export default Card;
 export const cards: CardType[] = [
   {
     id: 1,
-    url: "/assets/service1.jpg",
+    url: "/assets/service1.webp",
     title: "Event Production Hub",
     description: "Professional planning and production for live events.",
   },
   {
     id: 2,
-    url: "/assets/service2.jpg",
+    url: "/assets/service2.webp",
     title: "Photography",
     description: "Capturing high-quality images that tell your story.",
   },
   {
     id: 3,
-    url: "/assets/service3.jpg",
+    url: "/assets/service3.webp",
     title: "Videography",
     description: "Creating cinematic videos that engage and inspire audiences.",
   },
   {
     id: 4,
-    url: "/assets/service4.jpg",
+    url: "/assets/service4.webp",
     title: "Product & Advertisement Shoots",
     description:
       "Capturing your products & creating compelling ads that grab attention and drive results.",
   },
   {
     id: 5,
-    url: "/assets/service5.jpg",
+    url: "/assets/service5.webp",
     title: "Branding",
     description:
       "Crafting unique brand identities that leave a lasting impression.",
   },
   {
-    id: 7,
-    url: "/assets/service7.jpg",
+    id: 6,
+    url: "/assets/service6.webp",
     title: "Documentary",
     description: "Telling authentic stories that resonate with your audience.",
   },

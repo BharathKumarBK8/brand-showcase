@@ -4,8 +4,6 @@ import HorizontalScrollCarousel from "./components/HorizontalScroller/Horizontal
 import Section from "./components/Section";
 import StickyEnquiriesButton from "./StickyEnquiriesButton";
 import { useEnquiryForm } from "./context/EnquiryFormContext";
-import { MdLayers } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function Home() {
@@ -42,7 +40,7 @@ export default function Home() {
           title=" 
         SERVICES"
           description="A creative production studio delivering compelling visual experiences that bring events, products, and brands to life—combining photography, videography, and storytelling to make every project memorable."
-          icon={<MdLayers className="icon" />}
+          icon={<i className="bi bi-layers icon"></i>}
         />
       </Section>
       <Section
@@ -58,7 +56,7 @@ export default function Home() {
               alignItems: "center",
             }}
           >
-            <FaLocationDot className="icon" />
+            <i className="bi bi-geo-alt-fill icon"></i>
             <h2>Visit Us</h2>
           </div>
           <div>
