@@ -44,39 +44,20 @@ const HorizontalScrollCarousel = ({
   // Horizontal scroll animation
   const x = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.95], // ⬅️ animation finishes at 75%
     screenSize === "mobile"
-      ? ["1%", "-100%"]
+      ? ["0%", "-99%"]
       : screenSize === "tablet"
-      ? ["15%", "-100%"]
-      : ["20%", "-85%"]
+      ? ["10%", "-110%"]
+      : ["20%", "-100%"]
   );
 
-  const contentX = useTransform(
-    scrollYProgress,
-    [0, screenSize === "mobile" ? 0.25 : screenSize === "tablet" ? 0.3 : 0.35],
-    [
-      "0%",
-      screenSize === "mobile"
-        ? "-30%"
-        : screenSize === "tablet"
-        ? "-40%"
-        : "-50%",
-    ]
-  );
+  const contentX = useTransform(scrollYProgress, [0, 0.3], ["0%", "-50%"]);
 
-  const contentOpacity = useTransform(
-    scrollYProgress,
-    [0, screenSize === "mobile" ? 0.25 : screenSize === "tablet" ? 0.3 : 0.35],
-    [1, 0]
-  );
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
-    <section
-      id={id}
-      ref={targetRef}
-      className="relative h-[300vh] bg-neutral-900"
-    >
+    <section id={id} ref={targetRef} className="relative h-[300vh] bg-black">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <motion.div
           style={{ x: contentX, opacity: contentOpacity, margin: "2rem" }}

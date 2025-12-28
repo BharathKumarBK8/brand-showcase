@@ -33,6 +33,9 @@ export default function Home() {
           Let's Create Together
         </button>
       </Section>
+      <Section id="works">
+        <Events />
+      </Section>
       <Section>
         <HorizontalScrollCarousel
           id="services"
@@ -41,9 +44,6 @@ export default function Home() {
           description="A creative production studio delivering compelling visual experiences that bring events, products, and brands to life—combining photography, videography, and storytelling to make every project memorable."
           icon={<MdLayers className="icon" />}
         />
-      </Section>
-      <Section id="works">
-        <Events />
       </Section>
       <Section
         id="contact"

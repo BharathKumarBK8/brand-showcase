@@ -110,7 +110,7 @@ const Events: React.FC = () => {
   };
 
   return (
-    <div className="section">
+    <div className="section" style={{ backgroundColor: "rgb(23,23,23)" }}>
       <div>
         <div className="section-content">
           <div
