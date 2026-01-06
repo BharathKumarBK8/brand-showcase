@@ -1,25 +1,14 @@
 "use client";
-import { usePathname } from "next/navigation";
-import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { EnquiryFormProvider } from "../context/EnquiryFormContext";
 import LenisProvider from "../LenisProvider";
-
-const scrollToSection = (id: string) => {
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
+import PremiumResponsiveHeader from "./PremiumResponsiveHeader";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
   return (
     <LenisProvider>
       <EnquiryFormProvider>
-        {isHomePage && <Header onNavigate={scrollToSection} />}
+        <PremiumResponsiveHeader />
         {children}
         <Footer />
       </EnquiryFormProvider>

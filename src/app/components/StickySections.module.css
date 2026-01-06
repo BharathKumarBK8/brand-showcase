@@ -1,0 +1,61 @@
+.main {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.iconSvg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: black;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px white;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px white;
+}

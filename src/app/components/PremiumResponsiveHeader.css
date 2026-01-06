@@ -1,0 +1,179 @@
+/* =========================
+   Desktop Horizontal Header
+========================= */
+.header-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  z-index: 50;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Simple Logo */
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Menu and Header Right */
+.menu-items {
+  display: flex;
+  gap: 3rem;
+}
+
+.menu-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-link {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.contact-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px;
+  background-color: #111;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+/* =========================
+   Mobile Header
+========================= */
+.header-mobile {
+  display: none;
+}
+
+.mobile-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 1.5rem;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Mobile Logo */
+.mobile-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Hamburger Button */
+.hamburger-btn {
+  position: relative;
+  width: 42px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.hamburger-line:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 14px;
+}
+
+.hamburger-line:nth-child(3) {
+  bottom: 0;
+}
+
+/* Mobile Overlay Menu */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 45;
+}
+
+.mobile-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.mobile-contact-btn {
+  background-color: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 9999px;
+}
+
+.tooth-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #FF5722;
+  transition: transform 0.2s;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  .header-desktop {
+    display: none;
+  }
+
+  .header-mobile {
+    display: block;
+  }
+  .tooth-icon{
+    width: 44px;
+    height: 50px;
+  }
+}
