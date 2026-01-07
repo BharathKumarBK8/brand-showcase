@@ -1,7 +1,7 @@
 .footer {
   background: rgb(0,0,0);
   padding: 1.5rem 0;
-  color: #d1d5db; /* Light gray text */
+  color: #fff;
   font-size: 0.875rem;
   text-align: center;
   user-select: none;
@@ -9,29 +9,12 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.social-links a {
-  color: #d1d5db; /* Light gray icons */
-  text-decoration: none;
-  transition: color 0.3s ease, opacity 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.social-links a:hover {
-  color: rgb(255, 70, 70); /* Match the red accent */
-  opacity: 0.85;
 }
 
 @media (max-width: 768px) {

@@ -1,8 +1,10 @@
 .main {
   margin: 0;
   padding: 0;
+  font-family: system-ui, sans-serif;
 }
 
+/* Section wrapper */
 .section {
   position: sticky;
   top: 0;
@@ -14,48 +16,201 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.content {
+.sectionContent {
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+  padding: 2rem;
   text-align: center;
-  max-width: 600px;
 }
 
-.icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
 }
 
-.iconSvg {
-  width: 3rem;
-  height: 3rem;
+/* Headings */
+.heading {
+  font-size: 7.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 2rem;
 }
 
-.title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.description {
-  font-size: 1rem;
-  margin-bottom: 30px;
-}
-
-.button {
-  display: inline-flex;
+/* Buttons */
+.btnPrimary {
+  display: inline-block;
   align-items: center;
+  background: rgb(0, 148, 255);
+  margin-top: 2rem;
+  border-radius: 6px;
   gap: 8px;
-  padding: 12px 24px;
+  text-decoration: none;
+  padding: 1rem 2.2rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   color: black;
-  text-decoration: none;
-  border-radius: 6px;
   box-shadow: 4px 4px 0px white;
   transition: all 0.2s ease;
 }
 
-.button:hover {
+.btnPrimary:hover {
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0px white;
+}
+
+.btnSecondary {
+  color: #000;
+  padding: 0.9rem 2rem;
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: rgb(0, 148, 255);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 24px;
+}
+
+/* Grid Layouts */
+.gridTwoCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gridTwoColsLeft {
+  text-align: left;
+}
+
+.gridTwoColsRight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Card style for services */
+.serviceCard {
+  background: #f5f7fa;
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Clinic images */
+.clinicImg {
+  height: 200px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.clinicName {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.75;
+}
+
+/* Doctor image */
+.doctorImg {
+  width: 100%;
+  height: 80vh;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Padding variations */
+.extraPadding {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gridTwoCols,
+  .gridTwoColsRight {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .gridTwoColsLeft {
+    text-align: center;
+  }
+}
+/* ================== MOBILE RESPONSIVE ================== */
+@media (max-width: 768px) {
+  /* Section padding */
+  .sectionContent {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  /* Headings */
+  .heading {
+    font-size: 2.5rem; /* smaller for mobile */
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  /* Paragraph spacing */
+  .para {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0.8rem !important;
+  }
+
+  /* Buttons */
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  /* Two-column grids stack vertically */
+  .gridTwoCols,
+  .gridTwoColsRight {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+
+  .gridTwoColsLeft {
+    text-align: center;
+  }
+
+  /* Service cards */
+  .serviceCard {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  /* Clinic images */
+  .clinicImg {
+    height: 180px;
+    border-radius: 12px;
+  }
+
+  /* Doctor image */
+  .doctorImg {
+    height: 60vh; /* shorter height for mobile */
+    border-radius: 16px;
+  }
+
+  /* Extra padding sections */
+  .extraPadding {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
 }

@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link"; // Import Link
+import Link from "next/link";
 import styles from "./BlogPage.module.css";
 
 const posts = [
@@ -15,7 +14,7 @@ const posts = [
     category: "Hygiene",
     date: "Mar 12, 2025",
     readTime: "4 min read",
-    image: "/blog/cleaning.jpg",
+    image: "/assets/img3.jpg",
   },
   {
     id: 2,
@@ -26,7 +25,7 @@ const posts = [
     category: "Kids",
     date: "Mar 8, 2025",
     readTime: "5 min read",
-    image: "/blog/kids.jpg",
+    image: "/assets/img1.jpg",
   },
   {
     id: 3,
@@ -37,7 +36,7 @@ const posts = [
     category: "Cosmetic",
     date: "Mar 3, 2025",
     readTime: "3 min read",
-    image: "/blog/whitening.jpg",
+    image: "/assets/img4.jpg",
   },
 ];
 

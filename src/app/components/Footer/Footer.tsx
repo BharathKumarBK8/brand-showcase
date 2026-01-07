@@ -6,17 +6,6 @@ const Footer: React.FC = () => {
     <div className="footer">
       <div className="footer-content">
         <div>© {new Date().getFullYear()} Dr. Joe's Dental.</div>
-        <div className="social-links">
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-instagram"></i>
-          </a>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-facebook"></i>
-          </a>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-youtube"></i>
-          </a>
-        </div>
       </div>
     </div>
   );

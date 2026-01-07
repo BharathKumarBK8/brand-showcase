@@ -54,15 +54,15 @@ export default function NotFound() {
           fontSize: "1.1rem",
           fontWeight: 500,
           padding: "0.75rem 0",
-          borderBottom: "2px solid rgb(205,0,1)",
+          borderBottom: "2px solid rgb(0,148,255)",
           transition: "all 0.3s ease",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.borderBottomColor = "white";
-          e.currentTarget.style.color = "rgb(205,0,1)";
+          e.currentTarget.style.color = "rgb(0,148,255)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderBottomColor = "rgb(205,0,1)";
+          e.currentTarget.style.borderBottomColor = "rgb(0,148,255)";
           e.currentTarget.style.color = "white";
         }}
       >
