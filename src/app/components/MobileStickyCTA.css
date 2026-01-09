@@ -1,0 +1,59 @@
+.mobile-cta-pill {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: .5px solid rgba(255, 255, 255, 1);
+  height: 4rem;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #000;
+  border-radius: 999px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25),   /* dark shadow for light bg */
+    0 2px 6px rgba(255, 255, 255, 0.08), /* light highlight for dark bg */
+    0 4px 12px rgba(0, 0, 0, 0.15);     /* medium shadow for depth */
+
+  z-index: 999;
+}
+
+/* CTA items */
+.cta-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+/* Icons */
+.cta-item i {
+  font-size: 1.2rem;
+}
+
+/* Divider */
+.cta-divider {
+  width: .15rem;
+  height: 2.25rem;
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Text container */
+.cta-text {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Desktop off */
+@media (min-width: 768px) {
+  .mobile-cta-pill {
+    display: none;
+  }
+}

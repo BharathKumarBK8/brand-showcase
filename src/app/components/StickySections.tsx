@@ -196,10 +196,26 @@ export default function StickySections() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
         >
-          <h2 className={styles.heading} style={{ marginBottom: "2rem" }}>
-            Why Choose Dr. Joe’s?
+          {/* Heading with logo and text on the same line */}
+          <h2
+            className={`${styles.heading} ${styles.headingWithLogo}`}
+            style={{
+              marginBottom: "2rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem", // space between words and logo
+            }}
+          >
+            <span>Why Choose</span>
+            <img
+              src={"/assets/logo.png"}
+              alt="Dr. Joe's Logo"
+              className={styles.sectionLogo}
+            />
+            <span>?</span>
           </h2>
 
+          {/* Cards */}
           <div
             style={{
               display: "grid",

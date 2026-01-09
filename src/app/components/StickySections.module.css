@@ -124,6 +124,14 @@
 }
 
 /* Clinic images */
+.clinicCard {
+  transition: transform 0.3s ease-in-out;
+}
+
+.clinicCard:hover{
+  transform: scale(1.1);
+}
+
 .clinicImg {
   height: 40vh;
   border-radius: 16px;
@@ -167,6 +175,18 @@
   color: rgb(0, 148, 255); 
 }
 
+.headingWithLogo {
+  margin-bottom: "2rem";
+  display: "flex";
+  align-items: "center";
+  gap: "0.5rem"; 
+}
+
+.sectionLogo{
+    height: 8rem;
+    object-fit: contain;
+  }
+
 /* Responsive */
 @media (max-width: 768px) {
   .gridTwoCols,
@@ -178,6 +198,7 @@
   .gridTwoColsLeft {
     text-align: center;
   }
+
 }
 /* ================== MOBILE RESPONSIVE ================== */
 @media (max-width: 768px) {
@@ -249,4 +270,15 @@
     padding-top: 2rem;
     padding-bottom: 3rem;
   }
+
+  .headingWithLogo {
+  display: "flex";
+  flex-direction: column;
+  align-items: "center";
+  gap: "0.5rem"; 
+  }
+.sectionLogo{
+  height: 3rem;
+  }
+
 }

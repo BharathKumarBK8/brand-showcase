@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./PremiumResponsiveHeader.css";
 
-// motion Link wrapper for Framer Motion
-const MotionLink = motion(Link);
+// motion Link wrapper
+const MotionLink = motion.create(Link);
 
 const ToothIcon = ({ className }: { className?: string }) => (
   <svg
@@ -17,7 +17,7 @@ const ToothIcon = ({ className }: { className?: string }) => (
     stroke="currentColor"
     className={className}
   >
-    <path d="M239.964,0c-38.262,0-45.435,37.55-84.173,37.55C117.059,37.55,109.885,0,71.619,0C24.76,0,4.961,47.903,4.961,94.756 s39.731,216.817,86.584,216.817c19.814,0,24.366-108.723,64.241-108.723s44.426,108.723,64.241,108.723 c46.858,0,86.584-169.958,86.584-216.817S286.817,0,239.964,0z"></path>
+    <path d="M239.964,0c-38.262,0-45.435,37.55-84.173,37.55C117.059,37.55,109.885,0,71.619,0C24.76,0,4.961,47.903,4.961,94.756s39.731,216.817,86.584,216.817c19.814,0,24.366-108.723,64.241-108.723s44.426,108.723,64.241,108.723c46.858,0,86.584-169.958,86.584-216.817S286.817,0,239.964,0z" />
   </svg>
 );
 
@@ -30,6 +30,11 @@ const menuItems = [
   },
   { label: "blog.", href: "/blog", icon: <i className="bi bi-journal-text" /> },
   {
+    label: "community services.",
+    href: "/community-services",
+    icon: <i className="bi bi-people-fill" />,
+  },
+  {
     label: "contact.",
     href: "/contact",
     icon: <i className="bi bi-envelope-fill" />,
@@ -41,8 +46,15 @@ const socialItems = [
   { iconClass: "bi bi-facebook", url: "#" },
 ];
 
-const PremiumResponsiveHeader: React.FC = () => {
-  const [open, setOpen] = useState(false);
+interface HeaderProps {
+  menuOpen: boolean;
+  setMenuOpen: (open: boolean) => void;
+}
+
+const PremiumResponsiveHeader: React.FC<HeaderProps> = ({
+  menuOpen,
+  setMenuOpen,
+}) => {
   const pathname = usePathname();
 
   const menuVariants: Variants = {
@@ -74,6 +86,7 @@ const PremiumResponsiveHeader: React.FC = () => {
                 variants={menuVariants}
                 initial="hidden"
                 animate="visible"
+                whileHover={{ scale: 1.1 }}
               >
                 {item.icon} {item.label}
               </MotionLink>
@@ -94,12 +107,13 @@ const PremiumResponsiveHeader: React.FC = () => {
               </motion.a>
             ))}
           </div>
+
           <MotionLink
             href="#appointment"
             className="contact-btn"
-            whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
+            whileHover={{ scale: 1.05 }}
           >
-            Book Appointment <i className="bi bi-arrow-right"></i>
+            Book Appointment <i className="bi bi-arrow-right" />
           </MotionLink>
         </div>
       </div>
@@ -107,36 +121,32 @@ const PremiumResponsiveHeader: React.FC = () => {
       {/* Mobile Header */}
       <div className="header-mobile">
         <div className="mobile-topbar">
-          {/* Mobile Logo */}
-          <Link href="/" onClick={() => setOpen(false)}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
             <img src="/assets/logo2.png" alt="Logo" className="mobile-logo" />
           </Link>
 
           <button
-            onClick={() => setOpen(!open)}
+            onClick={() => setMenuOpen(!menuOpen)}
             className="hamburger-btn"
             aria-label="Menu"
           >
             <motion.span
               className="hamburger-line"
-              animate={{ rotate: open ? 45 : 0, y: open ? 20 : 0 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 20 : 0 }}
             />
             <motion.span
               className="hamburger-line"
-              animate={{ opacity: open ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
+              animate={{ opacity: menuOpen ? 0 : 1 }}
             />
             <motion.span
               className="hamburger-line"
-              animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
             />
           </button>
         </div>
 
         <AnimatePresence>
-          {open && (
+          {menuOpen && (
             <motion.nav
               className="mobile-overlay"
               initial={{ opacity: 0 }}
@@ -157,7 +167,7 @@ const PremiumResponsiveHeader: React.FC = () => {
                         y: 0,
                         transition: { delay: i * 0.1 },
                       }}
-                      onClick={() => setOpen(false)}
+                      onClick={() => setMenuOpen(false)}
                     >
                       {item.icon} {item.label}
                     </MotionLink>
@@ -188,8 +198,9 @@ const PremiumResponsiveHeader: React.FC = () => {
                 className="mobile-contact-btn"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1, transition: { delay: 1 } }}
+                onClick={() => setMenuOpen(false)}
               >
-                Book Appointment <i className="bi bi-arrow-right"></i>
+                Book Appointment <i className="bi bi-arrow-right" />
               </MotionLink>
             </motion.nav>
           )}
