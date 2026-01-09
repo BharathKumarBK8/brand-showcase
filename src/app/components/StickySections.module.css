@@ -6,9 +6,8 @@
 
 /* Section wrapper */
 .section {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,10 +15,14 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+.sticky{
+  position: sticky;
+  top:0;
+}
+
 .sectionContent {
   position: relative;
   z-index: 2;
-  max-width: 80%;
   padding: 2rem;
   text-align: center;
 }
@@ -33,7 +36,7 @@
 
 /* Headings */
 .heading {
-  font-size: 7.5rem;
+  font-size: 5rem;
   font-weight: 900;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -64,11 +67,11 @@
 }
 
 .btnSecondary {
-  color: #000;
+  color: #fff;
   padding: 0.9rem 2rem;
   display: inline-block;
   margin-top: 1.5rem;
-  background: rgb(0, 148, 255);
+  background: #000;
   font-weight: 600;
   text-decoration: none;
   border-radius: 24px;
@@ -94,17 +97,35 @@
   gap: 1.5rem;
 }
 
-/* Card style for services */
-.serviceCard {
+.gridRightOneCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:1.5rem;
+}
+
+.whiteCard {
   background: #f5f7fa;
+  color:#000;
   padding: 1.2rem;
   border-radius: 12px;
   font-weight: 500;
 }
 
+.blackCard {
+  background: #000;
+  color:#fff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.para{
+  font-size: 1.25rem;
+}
+
 /* Clinic images */
 .clinicImg {
-  height: 200px;
+  height: 40vh;
   border-radius: 16px;
   background-size: cover;
   background-position: center;
@@ -112,6 +133,7 @@
 }
 
 .clinicName {
+  font-weight: 700;
   margin-top: 0.6rem;
   font-size: 0.9rem;
   text-align: center;
@@ -133,6 +155,16 @@
 .extraPadding {
   padding-top: 4rem;
   padding-bottom: 6rem;
+}
+
+.phoneLink{
+  color: inherit;
+  text-decoration: none;
+  transition: color .4s ease;
+}
+
+.phoneLink:hover{
+  color: rgb(0, 148, 255); 
 }
 
 /* Responsive */
@@ -190,8 +222,12 @@
     text-align: center;
   }
 
-  /* Service cards */
-  .serviceCard {
+  .whiteCard {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  .blackCard{
     font-size: 0.95rem;
     padding: 1rem;
   }

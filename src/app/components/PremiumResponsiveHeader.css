@@ -200,7 +200,7 @@
 }
 
 .mobile-link.active:hover {
-  color: #FF784E;
+  color: rgb(0,148,255);
   transform: scale(1.1);
 }
 
@@ -244,7 +244,7 @@
 .tooth-icon {
   width: 16px;
   height: 16px;
-  stroke: #FF5722;
+  stroke: rgb(0,148,255);
   transition: transform 0.2s;
 }
 

@@ -2,8 +2,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./PremiumResponsiveHeader.css";
+
+// motion Link wrapper for Framer Motion
+const MotionLink = motion(Link);
 
 const ToothIcon = ({ className }: { className?: string }) => (
   <svg
@@ -24,7 +28,6 @@ const menuItems = [
     href: "/services",
     icon: <ToothIcon className="tooth-icon" />,
   },
-  { label: "team.", href: "/team", icon: <i className="bi bi-people-fill" /> },
   { label: "blog.", href: "/blog", icon: <i className="bi bi-journal-text" /> },
   {
     label: "contact.",
@@ -55,13 +58,15 @@ const PremiumResponsiveHeader: React.FC = () => {
     <header>
       {/* Desktop Header */}
       <div className="header-desktop">
-        <img src="/assets/logo2.png" className="logo" alt="Logo" />
+        <Link href="/">
+          <img src="/assets/logo2.png" alt="Logo" className="logo" />
+        </Link>
 
         <nav className="menu-items">
           {menuItems.map((item, i) => {
             const isActive = pathname === item.href;
             return (
-              <motion.a
+              <MotionLink
                 key={item.label}
                 href={item.href}
                 className={`menu-link ${isActive ? "active" : ""}`}
@@ -69,10 +74,9 @@ const PremiumResponsiveHeader: React.FC = () => {
                 variants={menuVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ scale: 1.1, color: "#ccc" }}
               >
                 {item.icon} {item.label}
-              </motion.a>
+              </MotionLink>
             );
           })}
         </nav>
@@ -90,20 +94,23 @@ const PremiumResponsiveHeader: React.FC = () => {
               </motion.a>
             ))}
           </div>
-          <motion.a
+          <MotionLink
             href="#appointment"
             className="contact-btn"
             whileHover={{ scale: 1.05, backgroundColor: "#fff", color: "#000" }}
           >
             Book Appointment <i className="bi bi-arrow-right"></i>
-          </motion.a>
+          </MotionLink>
         </div>
       </div>
 
       {/* Mobile Header */}
       <div className="header-mobile">
         <div className="mobile-topbar">
-          <img src="/assets/logo2.png" className="mobile-logo" alt="Logo" />
+          {/* Mobile Logo */}
+          <Link href="/" onClick={() => setOpen(false)}>
+            <img src="/assets/logo2.png" alt="Logo" className="mobile-logo" />
+          </Link>
 
           <button
             onClick={() => setOpen(!open)}
@@ -140,11 +147,10 @@ const PremiumResponsiveHeader: React.FC = () => {
                 {menuItems.map((item, i) => {
                   const isActive = pathname === item.href;
                   return (
-                    <motion.a
+                    <MotionLink
                       key={item.label}
                       href={item.href}
                       className={`mobile-link ${isActive ? "active" : ""}`}
-                      custom={i}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{
                         opacity: 1,
@@ -154,7 +160,7 @@ const PremiumResponsiveHeader: React.FC = () => {
                       onClick={() => setOpen(false)}
                     >
                       {item.icon} {item.label}
-                    </motion.a>
+                    </MotionLink>
                   );
                 })}
               </div>
@@ -177,14 +183,14 @@ const PremiumResponsiveHeader: React.FC = () => {
                 ))}
               </div>
 
-              <motion.a
+              <MotionLink
                 href="#appointment"
                 className="mobile-contact-btn"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1, transition: { delay: 1 } }}
               >
                 Book Appointment <i className="bi bi-arrow-right"></i>
-              </motion.a>
+              </MotionLink>
             </motion.nav>
           )}
         </AnimatePresence>
