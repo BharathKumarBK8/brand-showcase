@@ -56,7 +56,7 @@
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: black;
+  color: white;
   box-shadow: 4px 4px 0px white;
   transition: all 0.2s ease;
 }
@@ -109,6 +109,11 @@
   padding: 1.2rem;
   border-radius: 12px;
   font-weight: 500;
+  transition: transform 0.3s ease-in-out;
+}
+
+.whiteCard:hover{
+  transform: scale(1.05);
 }
 
 .blackCard {
@@ -187,6 +192,46 @@
     object-fit: contain;
   }
 
+.headingWithIcon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.gridWithDivider{
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+  gap: 2rem;
+}
+.gridDivider {
+  width: 1px;
+  background-color: #ddd;
+  height: 100%;
+}
+.mapContent {
+  height: 7.5rem;
+}
+
+.directionsBtn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.directionsBtn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .gridTwoCols,
@@ -197,6 +242,14 @@
 
   .gridTwoColsLeft {
     text-align: center;
+  }
+  .gridWithDivider{
+    grid-template-columns: 1fr;
+  }
+  .gridDivider{
+    width: 100%;
+    height: 1px;
+    margin:2rem 0;
   }
 
 }
@@ -281,4 +334,49 @@
   height: 3rem;
   }
 
+}
+
+/* Fix two-column layout */
+@media (max-width: 768px) {
+  .gridTwoCols {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    direction: ltr !important;
+  }
+
+  .gridTwoCols > div {
+    width: 100% !important;
+  }
+}
+
+/* Fix image overflow */
+@media (max-width: 768px) {
+  .gridTwoCols motion-div,
+  .gridTwoCols div[style*="background-image"] {
+    width: 100% !important;
+    height: 40vh !important;
+    border-radius: 12px;
+  }
+}
+
+/* Headings scale properly */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .para {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* CTA button */
+@media (max-width: 768px) {
+  .btnPrimary {
+    width: 100%;
+    text-align: center;
+  }
 }

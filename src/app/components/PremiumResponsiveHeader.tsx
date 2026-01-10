@@ -22,22 +22,22 @@ const ToothIcon = ({ className }: { className?: string }) => (
 );
 
 const menuItems = [
-  { label: "home.", href: "/", icon: <i className="bi bi-house-door-fill" /> },
+  { label: "home", href: "/", icon: <i className="bi bi-house-door-fill" /> },
   {
-    label: "services.",
+    label: "services",
     href: "/services",
     icon: <ToothIcon className="tooth-icon" />,
   },
-  { label: "blog.", href: "/blog", icon: <i className="bi bi-journal-text" /> },
+  { label: "blog", href: "/blog", icon: <i className="bi bi-journal-text" /> },
   {
-    label: "community services.",
+    label: "community services",
     href: "/community-services",
     icon: <i className="bi bi-people-fill" />,
   },
   {
-    label: "contact.",
-    href: "/contact",
-    icon: <i className="bi bi-envelope-fill" />,
+    label: "testimonials",
+    href: "/testimonials",
+    icon: <i className="bi bi-chat-dots-fill"></i>,
   },
 ];
 

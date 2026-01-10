@@ -5,7 +5,11 @@ import { motion, Variants, Transition } from "framer-motion";
 import styles from "./StickySections.module.css";
 
 /* ---------------- Animations ---------------- */
-const transition: Transition = { type: "spring", duration: 0.6 };
+const transition: Transition = {
+  type: "spring",
+  stiffness: 80,
+  damping: 15,
+};
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -29,6 +33,7 @@ interface SectionProps {
   sticky?: boolean;
   bgImage?: string;
   bgColor?: string;
+  style?: React.CSSProperties;
   textColor?: string;
   overlay?: boolean;
   children: React.ReactNode;
@@ -39,6 +44,7 @@ const Section = ({
   sticky,
   bgImage,
   bgColor,
+  style,
   textColor = "#000",
   overlay = false,
   children,
@@ -50,7 +56,7 @@ const Section = ({
       backgroundColor: bgColor,
       backgroundImage: bgImage ? `url(${bgImage})` : undefined,
       backgroundSize: "cover",
-      backgroundPosition: "center",
+      backgroundPosition: "50% 50%",
       color: textColor,
     }}
   >
@@ -67,17 +73,23 @@ export default function StickySections() {
   ];
 
   const points = [
-    { icon: "🦷", text: "Patient-first, anxiety-free care" },
-    { icon: "💰", text: "Premium treatment at fair pricing" },
-    { icon: "🧼", text: "Strict sterilization & hygiene protocols" },
-    { icon: "📋", text: "Transparent treatment plans before procedures" },
-    { icon: "⭐", text: "Trusted dental clinics in Madurai" },
+    { icon: "bi bi-heart-pulse", text: "Patient-first, anxiety-free care" },
+    {
+      icon: "bi bi-currency-dollar",
+      text: "Premium treatment at fair pricing",
+    },
+    { icon: "bi bi-droplet", text: "Strict sterilization & hygiene protocols" },
+    {
+      icon: "bi bi-file-text",
+      text: "Transparent treatment plans before procedures",
+    },
+    { icon: "bi bi-star-fill", text: "Best dental clinics in Madurai" },
   ];
 
   return (
     <main className={styles.main}>
       {/* HERO */}
-      <Section bgImage="" textColor="#fff" overlay sticky>
+      <Section bgImage="/assets/herobG321.jpg" textColor="#fff" overlay sticky>
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -120,9 +132,9 @@ export default function StickySections() {
             <h2 className={styles.heading}>Built on Trust, Grown with Care</h2>
 
             <p className={styles.para} style={{ marginTop: "1rem" }}>
-              What began in a modest <strong>110 sq ft clinic</strong> was
-              driven by one simple belief — dental care should be gentle,
-              honest, and affordable.
+              What began in a modest <strong>110 sq ft clinic</strong> at
+              Goripalayam was driven by one simple belief — dental care should
+              be gentle, honest, and affordable.
             </p>
 
             <p className={styles.para} style={{ marginTop: "1rem" }}>
@@ -141,7 +153,16 @@ export default function StickySections() {
                   className={styles.clinicImg}
                   style={{ backgroundImage: `url(${clinic.img})` }}
                 />
-                <p className={styles.clinicName}>{clinic.name}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                  }}
+                >
+                  <i className="bi bi-geo-alt-fill"></i>
+                  <p className={styles.clinicName}>{clinic.name}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -239,10 +260,9 @@ export default function StickySections() {
                 <div
                   style={{
                     fontSize: "1rem",
-                    marginBottom: "0.5rem",
                   }}
                 >
-                  {point.icon}
+                  <i className={point.icon}></i>
                 </div>
                 <p className={styles.para}>{point.text}</p>
               </motion.div>
@@ -291,33 +311,104 @@ export default function StickySections() {
       </Section>
 
       {/* FINAL CTA */}
-      <Section bgImage="" bgColor="#fff" textColor="#000">
-        <motion.div
-          id="contact"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-        >
-          <h2 className={styles.heading}>Your Healthier Smile Starts Here</h2>
-
-          <p className={styles.para} style={{ marginTop: "1rem" }}>
-            Visit us at Appanthirupathi or Pasingapuram.
-            <br />
-            Walk in or call for friendly guidance — no obligation, no pressure.
-            <br />
-            <a href="tel:+919945149151" className={styles.phoneLink}>
-              📞 (+91) 99451 49151
-            </a>
-          </p>
-
-          <a
-            href="https://maps.google.com"
-            target="_blank"
-            className={styles.btnSecondary}
+      {/* ---------------- VISIT US ---------------- */}
+      <Section bgColor="#fff" textColor="#000">
+        <div>
+          {/* Heading */}
+          <motion.div
+            className={styles.headingWithIcon}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
-            Visit Any Branch
-          </a>
-        </motion.div>
+            <i className="bi bi-cursor-fill icon"></i>
+            <h2>Visit Us</h2>
+          </motion.div>
+
+          {/* Grid */}
+          <motion.div
+            className={styles.gridWithDivider}
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* ---------------- Location 1 ---------------- */}
+            <motion.div variants={item}>
+              <div className={styles.mapContent}>
+                <address>
+                  <a
+                    href="https://maps.app.goo.gl/1NHreFWHu3h4CbMHA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="location-link"
+                  >
+                    <i className="bi bi-geo-alt-fill" /> 42/2, Alagar Kovil Main
+                    Rd, Appanthirupathi, Madurai, Tamil Nadu 625301
+                  </a>
+                </address>
+
+                <p className={styles.timingsP}>
+                  <i className="bi bi-clock-fill" />{" "}
+                  <strong>Monday – Saturday:</strong> 10:00 AM – 9:00 PM <br />
+                  <i className="bi bi-x-lg" /> <strong>Sunday:</strong> Closed
+                </p>
+              </div>
+
+              <iframe
+                title="Dr. Joe’s Dental Hospital – Appanthirupathi"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.942787080121!2d78.19098337503141!3d10.021580190084983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c702d07a7ecb%3A0x923cdd3fa082bc1d!2sDr.JOE&#39;s%20Dental%20Hospital!5e0!3m2!1sen!2sin!4v1768029355371!5m2!1sen!2sin"
+                width="100%"
+                height="350"
+                style={{ border: 0, borderRadius: "12px", marginTop: "1rem" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              ></iframe>
+            </motion.div>
+
+            {/* Divider */}
+            <div className={styles.gridDivider}></div>
+
+            {/* ---------------- Location 2 ---------------- */}
+            <motion.div variants={item}>
+              <div className={styles.mapContent}>
+                <address>
+                  <a
+                    href="https://maps.app.goo.gl/4JUH7EfASHpZaPTEA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="location-link"
+                  >
+                    <i className="bi bi-geo-alt-fill" />
+                    Shop 6, Ramakrishnan Nagar, Alanganallur Main Road, near
+                    Boston Aviation, Pasingapuram, Madurai, Tamil Nadu 625018
+                  </a>
+                </address>
+
+                <p className={styles.timingsP}>
+                  <strong>
+                    <i className="bi bi-clock-fill" /> Monday – Saturday:
+                  </strong>{" "}
+                  10:00 AM – 9:00 PM <br />
+                  <i className="bi bi-x-lg" /> <strong>Sunday:</strong> Closed
+                </p>
+              </div>
+
+              <iframe
+                title="Dr. Joe’s Dental Hospital – Pasingapuram"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.331049959913!2d78.09647757503102!3d9.98948889011538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c99d33970c67%3A0x74901e368d6f769!2sDr.%20JOE&#39;s%20Dental%20Hospital!5e0!3m2!1sen!2sin!4v1768029682415!5m2!1sen!2sin"
+                width="100%"
+                height="350"
+                style={{ border: 0, borderRadius: "12px", marginTop: "1rem" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              ></iframe>
+            </motion.div>
+          </motion.div>
+        </div>
       </Section>
     </main>
   );

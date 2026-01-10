@@ -58,7 +58,7 @@ export default function BlogPage() {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           Expert tips, oral health guides, and updates from Dr. Joe’s Dental
-          Clinic.
+          Hospitals - Madurai.
         </motion.p>
       </section>
 

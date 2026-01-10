@@ -16,12 +16,11 @@
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: #0d47a1;
+  color: rgb(0,148,255);
   margin-bottom: 1rem;
 }
 
 .hero p {
-  max-width: 640px;
   margin: 0 auto;
   font-size: 1.1rem;
   color: #555;

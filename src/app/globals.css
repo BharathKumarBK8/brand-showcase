@@ -43,140 +43,6 @@ body {
   scrollbar-color: #ffffff #000000;      /* thumb color | track color */
 }
 
-/* Chrome, Safari, Edge */
-.enquiry-form input:-webkit-autofill,
-.enquiry-form textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important; /* keep dark bg */
-  -webkit-text-fill-color: #fff !important; /* white text */
-  transition: background-color 5000s ease-in-out 0s; /* prevents flash */
-}
-
-/* Firefox */
-.enquiry-form input:-moz-autofill,
-.enquiry-form textarea:-moz-autofill {
-  box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
-  -moz-text-fill-color: #fff !important;
-}
-/* PrimeReact Dropdown Global Styles */
-.p-dropdown {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-}
-
-.p-dropdown:not(.p-disabled):hover {
-  border-color: rgb(205,0,1);
-}
-
-.p-dropdown:not(.p-disabled).p-focus {
-  border-color: rgb(205,0,1);
-  box-shadow: 0 0 0 0.2rem rgba(205,0,1,0.2);
-}
-
-.p-dropdown-panel {
-  background: #1e1e1e;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.p-dropdown-item {
-  color: white;
-}
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus:not(:hover) {
-  background: transparent !important;
-}
-
-
-.p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
-  background: rgba(205,0,1,0.1);
-}
-
-.p-dropdown-item.p-highlight {
-  background: rgb(205,0,1);
-  color: white;
-}
-.p-dropdown-label {
-  color: white;
-  font-weight: 600;
-}
-/* PrimeReact Toast Styles */
-.p-toast {
-  z-index: 9999;
-}
-
-.p-toast .p-toast-message {
-  background: rgba(30, 30, 30, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.p-toast .p-toast-message.p-toast-message-success {
-  border-left: 4px solid rgb(34, 53, 106);
-}
-
-.p-toast .p-toast-message.p-toast-message-error {
-  border-left: 4px solid rgb(205, 0, 1);
-}
-
-.p-toast .p-toast-message .p-toast-message-content {
-  color: white;
-  padding: 1rem;
-}
-
-.p-toast .p-toast-message .p-toast-summary {
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.p-toast .p-toast-message .p-toast-detail {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
-}
-
-.p-toast .p-toast-message .p-toast-icon-close {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.p-toast .p-toast-message .p-toast-icon-close:hover {
-  color: white;
-}
-
-.p-dialog .p-dialog-header-icon {
-  color: rgba(255, 255, 255, 0.7);
-  width: 2rem;
-  height: 2rem;
-}
-
-.p-dialog .p-dialog-header-icon:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.cta{
-  display: inline-block;
-  background: rgb(34,53,106);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  border-radius: 9999px;
-  border: none;
-  outline: none;
-  box-shadow: 0 8px 15px rgba(34, 53, 106, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  text-decoration: none;
-}
-
-.cta:hover,
-.cta:focus {
-  background: #1b2b59;
-  box-shadow: 0 12px 20px rgba(27, 43, 89, 0.4);
-  outline: none;
-}
-
 .section {
   min-height: 100vh;
   padding: clamp(3rem, 5vw, 6rem) clamp(1.25rem, 3vw, 4rem);
@@ -243,13 +109,14 @@ body {
   margin-bottom: 2rem;
 }
 .location-link {
+  font-size: 1.25rem;
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
 }
 
 .location-link:hover {
-  color: rgb(205, 0, 1);
+  color: rgb(0,148,255);
 }
 
 h2 {
@@ -291,8 +158,12 @@ h2 {
 }
 
 .icon {
-  font-size: 4rem;
+  font-size: 6rem;
   margin: 1rem;
+}
+.timingsP{
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
 }
 
 @media (min-width: 1024px) {
@@ -328,6 +199,16 @@ p{
   p{
     font-size: .9rem;
   }
+  .icon{
+    font-size: 3rem;
+  }
+  .location-link{
+    font-size: 1rem;
+  }
+  .timingsP{
+    font-size: .5rem;
+  }
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
