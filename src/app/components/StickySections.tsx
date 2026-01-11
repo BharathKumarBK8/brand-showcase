@@ -1,73 +1,10 @@
 "use client";
 
-import React from "react";
-import { motion, Variants, Transition } from "framer-motion";
+import { motion } from "framer-motion";
+import { fadeUp, container, item } from "@/app/hooks/animation";
 import styles from "./StickySections.module.css";
+import Section from "./Section";
 import Link from "next/link";
-
-/* ---------------- Animations ---------------- */
-const transition: Transition = {
-  type: "spring",
-  stiffness: 80,
-  damping: 15,
-};
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition },
-};
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-/* ---------------- Section Wrapper ---------------- */
-interface SectionProps {
-  id?: string;
-  sticky?: boolean;
-  bgImage?: string;
-  bgColor?: string;
-  style?: React.CSSProperties;
-  textColor?: string;
-  overlay?: boolean;
-  children: React.ReactNode;
-  className?: string;
-}
-
-const Section = ({
-  id,
-  sticky,
-  bgImage,
-  bgColor,
-  style,
-  textColor = "#000",
-  overlay = false,
-  children,
-  className = "",
-}: SectionProps) => (
-  <section
-    id={id}
-    className={`${styles.section} ${sticky ? styles.sticky : ""} ${className}`}
-    style={{
-      backgroundColor: bgColor,
-      backgroundImage: bgImage ? `url(${bgImage})` : undefined,
-      backgroundSize: "cover",
-      backgroundPosition: "50% 50%",
-      color: textColor,
-    }}
-  >
-    {overlay && <div className={styles.overlay} />}
-    <div className={styles.sectionContent}>{children}</div>
-  </section>
-);
 
 /* ---------------- Landing Page ---------------- */
 export default function StickySections() {

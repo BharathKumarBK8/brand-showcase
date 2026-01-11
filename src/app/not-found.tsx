@@ -5,12 +5,8 @@ import Section from "./components/Section";
 export default function NotFound() {
   return (
     <Section
-      className="section section-hero"
-      backgroundClassName="background"
-      backgroundStyle={{
-        background: "linear-gradient(135deg, #000 0%, #1a1a1a 100%)",
-      }}
-      contentStyle={{ position: "relative", zIndex: 1, textAlign: "center" }}
+      bgColor="linear-gradient(135deg, #000 0%, #1a1a1a 100%)"
+      textColor="#fff"
     >
       <h1
         style={{

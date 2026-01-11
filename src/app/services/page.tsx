@@ -1,60 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  Variants,
-  Transition,
-} from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Section from "@/app/components/Section";
+import { fadeUp } from "../hooks/animation";
 import styles from "@/app/components/StickySections.module.css";
-
-/* ---------------- Animations ---------------- */
-const transition: Transition = {
-  type: "spring",
-  stiffness: 80,
-  damping: 15,
-};
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition },
-};
-
-/* ---------------- Section Wrapper ---------------- */
-const Section = ({
-  id,
-  bgColor,
-  bgImage,
-  textColor = "#000",
-  children,
-  overlay,
-  sticky,
-}: {
-  id?: string;
-  overlay?: boolean;
-  bgColor?: string;
-  bgImage?: string;
-  textColor?: string;
-  children: React.ReactNode;
-  sticky?: boolean;
-}) => (
-  <section
-    id={id}
-    className={`${styles.section} ${sticky ? styles.sticky : ""}`}
-    style={{
-      backgroundColor: bgColor,
-      backgroundImage: bgImage ? `url(${bgImage})` : undefined,
-      backgroundSize: "cover",
-      backgroundPosition: "50% 50%",
-      color: textColor,
-    }}
-  >
-    {overlay && <div className={styles.overlay} />}
-    <div className={styles.sectionContent}>{children}</div>
-  </section>
-);
 
 /* ---------------- Services Data ---------------- */
 const services = [
