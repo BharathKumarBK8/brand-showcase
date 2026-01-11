@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, Variants, Transition } from "framer-motion";
 import styles from "./StickySections.module.css";
+import Link from "next/link";
 
 /* ---------------- Animations ---------------- */
 const transition: Transition = {
@@ -30,6 +31,7 @@ const item = {
 
 /* ---------------- Section Wrapper ---------------- */
 interface SectionProps {
+  id?: string;
   sticky?: boolean;
   bgImage?: string;
   bgColor?: string;
@@ -41,6 +43,7 @@ interface SectionProps {
 }
 
 const Section = ({
+  id,
   sticky,
   bgImage,
   bgColor,
@@ -51,6 +54,7 @@ const Section = ({
   className = "",
 }: SectionProps) => (
   <section
+    id={id}
     className={`${styles.section} ${sticky ? styles.sticky : ""} ${className}`}
     style={{
       backgroundColor: bgColor,
@@ -84,6 +88,15 @@ export default function StickySections() {
       text: "Transparent treatment plans before procedures",
     },
     { icon: "bi bi-star-fill", text: "Best dental clinics in Madurai" },
+  ];
+
+  const servicesList = [
+    { name: "Routine Dental Checkups", id: "routine-checkups" },
+    { name: "Root Canal Treatment", id: "root-canal" },
+    { name: "Dental Implants", id: "dental-implants" },
+    { name: "Braces & Clear Aligners", id: "braces-aligners" },
+    { name: "Teeth Whitening", id: "teeth-whitening" },
+    { name: "Smile Makeovers", id: "smile-makeovers" },
   ];
 
   return (
@@ -157,10 +170,13 @@ export default function StickySections() {
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    alignContent: "center",
+                    alignItems: "end",
                   }}
                 >
-                  <i className="bi bi-geo-alt-fill"></i>
+                  <img
+                    src={"/assets/locationpicker.svg"}
+                    className={styles.locationPicker}
+                  />
                   <p className={styles.clinicName}>{clinic.name}</p>
                 </div>
               </div>
@@ -173,30 +189,35 @@ export default function StickySections() {
       <Section bgColor="#000" textColor="#fff">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
           <h2 className={styles.heading}>Our Dental Services</h2>
-
           <p className={styles.para} style={{ marginTop: "1rem" }}>
             We focus on anxiety-free dentistry — explaining every step clearly
             before treatment begins.
           </p>
-
-          <div
+          {/* Animated grid for service cards */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
             className={styles.gridTwoColsRight}
-            style={{ marginTop: "2rem" }}
           >
-            {[
-              "Routine Dental Checkups",
-              "Root Canal Treatment",
-              "Dental Implants",
-              "Braces & Clear Aligners",
-              "Teeth Whitening",
-              "Smile Makeovers",
-            ].map((item) => (
-              <div key={item} className={styles.whiteCard}>
-                🦷 {item}
-              </div>
+            {servicesList.map((service) => (
+              <motion.div
+                key={service.id}
+                variants={item}
+                className={styles.whiteCard}
+                whileHover={{ scale: "1.05" }}
+              >
+                <Link
+                  href={`/services#${service.id}`}
+                  scroll
+                  style={{ display: "block", width: "100%", height: "100%" }}
+                >
+                  🦷 {service.name}
+                </Link>
+              </motion.div>
             ))}
-          </div>
-
+          </motion.div>
           <p className={styles.para} style={{ marginTop: "1.5rem" }}>
             With <strong>digital X-rays</strong> and
             <strong> intraoral scanners</strong>, we ensure precise, safe, and

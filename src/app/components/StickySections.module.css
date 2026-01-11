@@ -112,10 +112,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.whiteCard:hover{
-  transform: scale(1.05);
-}
-
 .blackCard {
   background: #000;
   color:#fff;
@@ -131,6 +127,9 @@
 /* Clinic images */
 .clinicCard {
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .clinicCard:hover{
@@ -139,6 +138,7 @@
 
 .clinicImg {
   height: 40vh;
+  width: 100%;
   border-radius: 16px;
   background-size: cover;
   background-position: center;
@@ -229,6 +229,11 @@
 .directionsBtn:hover {
   background: #333;
   transform: translateY(-2px);
+}
+
+.locationPicker{
+  height: 1.5rem;
+  width: auto;
 }
 
 

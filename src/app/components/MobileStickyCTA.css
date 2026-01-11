@@ -1,36 +1,58 @@
 .mobile-cta-pill {
   position: fixed;
   bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  border: .5px solid rgba(255, 255, 255, 1);
-  height: 4rem;
-  padding: 0 20px;
+  right: 1rem; /* right-aligned */
+  height: 4rem; /* fixed height to prevent oval */
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   background: #000;
+   box-shadow: 0 0 10px rgba(255, 255, 255, 0.25),0 4px 12px rgba(0, 0, 0, 0.4);
   border-radius: 999px;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.25),   /* dark shadow for light bg */
-    0 2px 6px rgba(255, 255, 255, 0.08), /* light highlight for dark bg */
-    0 4px 12px rgba(0, 0, 0, 0.15);     /* medium shadow for depth */
-
+  padding: 0 16px; /* full pill padding */
+  overflow: hidden;
   z-index: 999;
+  cursor: pointer;
+  transition: border-radius 0.3s ease; /* only animate radius */
+  justify-content: flex-start;
+}
+
+/* Collapsed state */
+.mobile-cta-pill.collapsed {
+  width: 4rem; /* equal to height → perfect circle */
+  padding: 0;   /* remove padding so it doesn’t stretch */
+  border-radius: 50%; 
+  gap: 0;
+  justify-content: center;
+  overflow: visible; /* show mini icons */
 }
 
 /* CTA items */
 .cta-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-
+  gap: 0.75rem;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.05rem;
   text-transform: lowercase;
   white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide text/divider/extra items when collapsed */
+.mobile-cta-pill.collapsed .cta-text,
+.mobile-cta-pill.collapsed .cta-divider,
+.mobile-cta-pill.collapsed .cta-item:not(:first-child) {
+  display: none;
+}
+
+/* Divider */
+.cta-divider {
+  width: 0.15rem;
+  height: 2.25rem;
+  background: rgba(255, 255, 255, 1);
 }
 
 /* Icons */
@@ -38,17 +60,38 @@
   font-size: 1.2rem;
 }
 
-/* Divider */
-.cta-divider {
-  width: .15rem;
-  height: 2.25rem;
-  background: rgba(255, 255, 255, 1);
+/* Toggle button icon */
+.cta-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-/* Text container */
-.cta-text {
-  position: relative;
-  overflow: hidden;
+/* Mini CTA hint in collapsed state */
+.mini-cta-icons {
+  display: flex;
+  position: absolute;
+  gap: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.2s infinite ease-in-out; /* subtle pulse */
+}
+
+.mini-cta-icons i {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
 /* Desktop off */

@@ -3,11 +3,13 @@ import "./Footer.css";
 
 const Footer: React.FC = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footer-content">
-        <div>© {new Date().getFullYear()} Dr. Joe's Dental.</div>
+        <span>© {new Date().getFullYear()} Dr. Joe&apos;s Dental.</span>
+
+        <span className="footer-credit">Designed & built by bk.</span>
       </div>
-    </div>
+    </footer>
   );
 };
 

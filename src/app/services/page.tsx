@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import styles from "@/app/components/StickySections.module.css";
 
-/* ---------------- Animations (same as landing) ---------------- */
+/* ---------------- Animations ---------------- */
 const transition: Transition = {
   type: "spring",
   stiffness: 80,
@@ -24,20 +24,34 @@ const fadeUp: Variants = {
 
 /* ---------------- Section Wrapper ---------------- */
 const Section = ({
+  id,
   bgColor,
+  bgImage,
   textColor = "#000",
   children,
+  overlay,
   sticky,
 }: {
+  id?: string;
+  overlay?: boolean;
   bgColor?: string;
+  bgImage?: string;
   textColor?: string;
   children: React.ReactNode;
   sticky?: boolean;
 }) => (
   <section
+    id={id}
     className={`${styles.section} ${sticky ? styles.sticky : ""}`}
-    style={{ backgroundColor: bgColor, color: textColor }}
+    style={{
+      backgroundColor: bgColor,
+      backgroundImage: bgImage ? `url(${bgImage})` : undefined,
+      backgroundSize: "cover",
+      backgroundPosition: "50% 50%",
+      color: textColor,
+    }}
   >
+    {overlay && <div className={styles.overlay} />}
     <div className={styles.sectionContent}>{children}</div>
   </section>
 );
@@ -45,36 +59,42 @@ const Section = ({
 /* ---------------- Services Data ---------------- */
 const services = [
   {
+    id: "invisible-aligners",
     title: "Invisible Aligners",
     image: "/assets/dentalaligners.jpeg",
     description:
       "Invisible aligners at Dr. Joe’s Dental Hospital provide a discreet and modern solution for straightening teeth without metal braces. Using advanced 3D digital scans and AI-based treatment planning, we design custom clear aligners that gradually correct gaps, crowding, and bite issues while remaining nearly invisible throughout treatment.",
   },
   {
+    id: "routine-checkups",
     title: "Routine Dental Checkups",
     image: "/assets/heroBg.jpg",
     description:
       "Routine dental checkups form the foundation of long-term oral health. At Dr. Joe’s Dental Hospital in Appanthirupathi and Pasingapuram, each visit focuses on early detection, professional cleaning, and preventive care to help patients avoid complex dental problems and maintain healthy smiles year after year.",
   },
   {
+    id: "dental-implants",
     title: "Dental Implants",
     image: "/assets/dentalimplants.jpg",
     description:
       "Dental implants are a permanent and natural-looking solution for missing teeth. Our Madurai clinics use titanium implants and computer-guided techniques to restore function, preserve jawbone health, and deliver results that closely resemble natural teeth in both appearance and strength.",
   },
   {
+    id: "root-canal",
     title: "Root Canal Treatment",
     image: "/assets/services/root-canal.jpg",
     description:
       "Root canal treatment at Dr. Joe’s Dental Hospital is designed to eliminate pain while preserving your natural tooth. With advanced imaging, precision tools, and modern anesthesia, we ensure a comfortable, stress-free experience that saves teeth and prevents further infection.",
   },
   {
+    id: "smile-makeovers",
     title: "Smile Makeovers",
     image: "/assets/services/smile-makeover.jpg",
     description:
       "A smile makeover is a personalized cosmetic transformation that enhances the shape, color, and alignment of your teeth. By combining treatments such as veneers, whitening, crowns, and orthodontics, we create balanced, natural-looking smiles tailored to your facial features and lifestyle.",
   },
   {
+    id: "teeth-whitening",
     title: "Teeth Whitening",
     image: "/assets/img1.jpg",
     description:
@@ -87,7 +107,12 @@ export default function ServicesPage() {
   return (
     <main className={styles.main}>
       {/* HERO */}
-      <Section bgColor="#fff" textColor="#000">
+      <Section
+        bgImage="/assets/hero.jpg"
+        bgColor="#000"
+        textColor="#fff"
+        overlay
+      >
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -123,10 +148,10 @@ export default function ServicesPage() {
 
         return (
           <Section
-            key={service.title}
+            key={service.id}
+            id={service.id} // ✅ Use the slug/id here
             bgColor={dark ? "#000" : "#fff"}
             textColor={dark ? "#fff" : "#000"}
-            sticky
           >
             <motion.div
               variants={fadeUp}
@@ -182,7 +207,7 @@ export default function ServicesPage() {
           whileInView="visible"
           className={styles.heading}
         >
-          Book Your Consultation
+          Book Your Appointment
         </motion.h2>
 
         <motion.p
