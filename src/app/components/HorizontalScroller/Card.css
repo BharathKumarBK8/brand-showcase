@@ -45,7 +45,7 @@
 @media(max-width:768px) {
 .card{
         width: 20rem;
-        height: 20rem;
+        height: 15rem;
       }    
 
       .card-title {
@@ -56,4 +56,11 @@
     font-size: 0.9rem;
   }
 
+}
+
+@media (max-width: 424px)  {
+    .card {
+        width: 15rem;
+        height: 15rem;
+    }   
 }

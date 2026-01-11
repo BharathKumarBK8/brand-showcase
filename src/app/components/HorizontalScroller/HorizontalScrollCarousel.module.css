@@ -1,0 +1,112 @@
+/* =========================
+   GLOBAL / SECTION STYLING
+   ========================= */
+
+.carouselSection {
+  position: relative;
+  background-color: black;
+}
+
+/* =========================
+   DESKTOP VIEW
+   ========================= */
+
+.desktopWrapper {
+  position: relative;
+  height: 400vh; /* allows vertical scrolling to drive horizontal motion */
+}
+
+.desktopSticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.desktopText {
+  max-width: 24rem; /* roughly Tailwind max-w-md */
+  margin: 0 2rem;
+}
+
+.desktopCards {
+  display: flex;
+  gap: 1.5rem; /* px-8 + gap-6 equivalent */
+  margin: 0 2rem;
+  will-change: transform;
+}
+
+/* =========================
+   MOBILE / TABLET VIEW
+   ========================= */
+
+.mobileSection {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100svh; 
+  padding: 1.5rem 1rem;
+  background-color: black;
+}
+
+.mobileHeader > div {
+  margin-bottom: 0.5rem;
+}
+
+.mobileHeader h2 {
+  margin: 0;
+  color: white;
+}
+
+.mobileHeader p {
+  margin-top: 0.5rem;
+  color: white;
+  font-size: 1.15rem;
+}
+
+.swipeHint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: #9ca3af;
+}
+
+.carouselWrapper {
+  margin-top: 1rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carouselItem {
+  flex-shrink: 0;
+  width: 80%;
+  scroll-snap-align: start;
+}
+
+
+@media (max-width: 424px)  {
+    .carouselItem {
+        width: 80%;
+    }
+    
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .carouselItem{
+        width: 45%;
+    }
+}

@@ -3,7 +3,6 @@
   padding: 1.5rem 0;
   color: #d1d5db; /* Light gray text */
   font-size: 0.875rem;
-  text-align: center;
   user-select: none;
 }
 
@@ -15,6 +14,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  text-align: center; /* fallback for mobile */
 }
 
 .social-links {
@@ -30,13 +30,18 @@
 }
 
 .social-links a:hover {
-  color: rgb(255, 70, 70); /* Match the red accent */
+  color: rgb(255, 70, 70); /* Red accent */
   opacity: 0.85;
+}
+
+.footer-credit {
+  font-size: 0.75rem;
+  opacity: 0.6;
 }
 
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 1rem;
     text-align: center;
   }

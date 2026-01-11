@@ -2,6 +2,7 @@
 
 import { motion, useTransform, useScroll, useSpring } from "framer-motion";
 import { useRef, useEffect, useState, ReactNode } from "react";
+import styles from "./HorizontalScrollCarousel.module.css";
 import Card, { cards } from "./Card";
 
 interface HorizontalScrollCarouselProps {
@@ -22,6 +23,7 @@ const HorizontalScrollCarousel = ({
     "desktop"
   );
 
+  // Detect screen size
   useEffect(() => {
     const updateScreenSize = () => {
       const width = window.innerWidth;
@@ -35,43 +37,70 @@ const HorizontalScrollCarousel = ({
     return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
+  // Scroll animation (desktop only)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  const xRaw = useTransform(
-    scrollYProgress,
-    [0, 0.95],
-    screenSize === "mobile"
-      ? ["0%", "-99%"]
-      : screenSize === "tablet"
-      ? ["10%", "-92%"]
-      : ["10%", "-83.5%"]
-  );
-
-  const x = useSpring(xRaw, { damping: 30, stiffness: 100 });
+  // Horizontal motion
+  const xRaw = useTransform(scrollYProgress, [0, 0.95], ["10%", "-78%"]);
+  const springX = useSpring(xRaw, { damping: 30, stiffness: 100 });
+  const x = screenSize === "desktop" ? springX : "0%";
 
   const contentX = useTransform(scrollYProgress, [0, 0.3], ["0%", "-50%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
-    <section id={id} ref={targetRef} className="relative h-[400vh] bg-black">
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        <motion.div
-          style={{ x: contentX, opacity: contentOpacity, margin: "2rem" }}
-        >
-          {icon && <div className="mb-4">{icon}</div>}
-          <h2>{title}</h2>
-          <p style={{ margin: "2rem" }}>{description}</p>
-        </motion.div>
+    <section id={id} ref={targetRef} className={styles.carouselSection}>
+      {screenSize === "desktop" ? (
+        // Desktop
+        <div className={styles.desktopWrapper}>
+          <div className={styles.desktopSticky}>
+            <motion.div
+              style={{ x: contentX, opacity: contentOpacity }}
+              className={styles.desktopText}
+            >
+              {icon && <div className="mb-4">{icon}</div>}
+              {title && <h2>{title}</h2>}
+              {description && <p className="mt-4">{description}</p>}
+            </motion.div>
 
-        <motion.div style={{ x }} className="flex gap-4 px-8">
-          {cards.map((card) => (
-            <Card card={card} key={card.id} />
-          ))}
-        </motion.div>
-      </div>
+            <motion.div style={{ x }} className={styles.desktopCards}>
+              {cards.map((card) => (
+                <Card key={card.id} card={card} />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      ) : (
+        // Mobile / Tablet
+        <div className={styles.mobileSection}>
+          {/* Header */}
+          <div className={styles.mobileHeader}>
+            {icon && <div>{icon}</div>}
+            {title && <h2>{title}</h2>}
+            {description && <p>{description}</p>}
+
+            {/* Swipe hint */}
+            <div className={styles.swipeHint}>
+              <i className="bi bi-arrow-left-right animate-pulse" />
+              <span>Swipe to explore</span>
+            </div>
+          </div>
+
+          {/* Carousel */}
+          <div className={styles.carouselWrapper}>
+            <div className={styles.carousel}>
+              {cards.map((card) => (
+                <div key={card.id} className={styles.carouselItem}>
+                  <Card card={card} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
