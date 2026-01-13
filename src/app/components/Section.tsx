@@ -32,9 +32,8 @@ const Section = ({
     style={{
       backgroundColor: bgColor,
       backgroundImage: bgImage ? `url(${bgImage})` : undefined,
-      backgroundSize: "cover",
-      backgroundPosition: "50% 50%",
       color: textColor,
+      ...style,
     }}
   >
     {overlay && <div className={styles.overlay} />}

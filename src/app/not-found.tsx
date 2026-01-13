@@ -7,6 +7,7 @@ export default function NotFound() {
     <Section
       bgColor="linear-gradient(135deg, #000 0%, #1a1a1a 100%)"
       textColor="#fff"
+      style={{ height: "90vh" }}
     >
       <h1
         style={{

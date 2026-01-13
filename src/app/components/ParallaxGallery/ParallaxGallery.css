@@ -1,0 +1,53 @@
+/* Portfolio / Parallax gallery */
+
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: center;
+  padding-top: 2rem;
+}
+
+/* Title and description wrapper styles */
+.portfolio > h2 {
+  grid-column: 1 / -1; /* span full width */
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #111);
+}
+
+.portfolio > p {
+  grid-column: 1 / -1; /* span full width */
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-secondary, #555);
+}
+
+/* Images */
+.portfolio img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+  transform: translateZ(0);
+  display: block;
+}
+
+/* Responsive: stack images and center text on smaller screens */
+@media (max-width: 900px) {
+  .portfolio {
+    grid-template-columns: 1fr;
+  }
+  
+  .portfolio > h2,
+  .portfolio > p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

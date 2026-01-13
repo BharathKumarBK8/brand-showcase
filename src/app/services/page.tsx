@@ -11,44 +11,72 @@ const services = [
   {
     id: "invisible-aligners",
     title: "Invisible Aligners",
-    image: "/assets/dentalaligners.jpeg",
+    image: "/assets/services/Aligners.jpeg",
     description:
-      "Invisible aligners at Dr. Joe’s Dental Hospital provide a discreet and modern solution for straightening teeth without metal braces. Using advanced 3D digital scans and AI-based treatment planning, we design custom clear aligners that gradually correct gaps, crowding, and bite issues while remaining nearly invisible throughout treatment.",
+      "Our invisible aligners offer a discreet, comfortable way to straighten teeth without metal braces. Using advanced 3D scans and custom treatment plans, these clear trays gradually correct gaps, crowding, and bite issues while remaining nearly invisible.",
   },
   {
     id: "routine-checkups",
     title: "Routine Dental Checkups",
-    image: "/assets/heroBg.jpg",
+    image: "/assets/services/Checkups.jpg",
     description:
-      "Routine dental checkups form the foundation of long-term oral health. At Dr. Joe’s Dental Hospital in Appanthirupathi and Pasingapuram, each visit focuses on early detection, professional cleaning, and preventive care to help patients avoid complex dental problems and maintain healthy smiles year after year.",
+      "Regular dental checkups are essential for maintaining long-term oral health. Each visit includes professional cleaning, early detection of dental issues, and personalized advice to keep your smile healthy and strong.",
   },
   {
     id: "dental-implants",
     title: "Dental Implants",
-    image: "/assets/dentalimplants.jpg",
+    image: "/assets/services/Implants.jpg",
     description:
-      "Dental implants are a permanent and natural-looking solution for missing teeth. Our Madurai clinics use titanium implants and computer-guided techniques to restore function, preserve jawbone health, and deliver results that closely resemble natural teeth in both appearance and strength.",
+      "Dental implants are a permanent solution for missing teeth, restoring both function and aesthetics. We use titanium implants and precise placement techniques to ensure natural-looking results that last for years.",
   },
   {
     id: "root-canal",
     title: "Root Canal Treatment",
     image: "/assets/services/root-canal.jpg",
     description:
-      "Root canal treatment at Dr. Joe’s Dental Hospital is designed to eliminate pain while preserving your natural tooth. With advanced imaging, precision tools, and modern anesthesia, we ensure a comfortable, stress-free experience that saves teeth and prevents further infection.",
+      "Root canal treatment saves infected or damaged teeth, relieving pain and preventing further complications. With advanced tools and modern anesthesia, we ensure a comfortable and effective procedure",
   },
   {
     id: "smile-makeovers",
     title: "Smile Makeovers",
     image: "/assets/services/smile-makeover.jpg",
     description:
-      "A smile makeover is a personalized cosmetic transformation that enhances the shape, color, and alignment of your teeth. By combining treatments such as veneers, whitening, crowns, and orthodontics, we create balanced, natural-looking smiles tailored to your facial features and lifestyle.",
+      "A smile makeover combines treatments like veneers, whitening, crowns, and orthodontics to enhance your teeth’s appearance. Each plan is personalized to create a natural, balanced, and confident smile.",
   },
   {
     id: "teeth-whitening",
     title: "Teeth Whitening",
-    image: "/assets/img1.jpg",
+    image: "/assets/services/TeethWhitening.jpg",
     description:
-      "Professional teeth whitening at Dr. Joe’s Dental Hospital delivers visible results in a single visit. Using safe, enamel-friendly systems such as laser or Zoom whitening, we remove deep stains and discoloration to reveal a brighter, more confident smile.",
+      "Professional teeth whitening removes stains and discoloration to brighten your smile in a single visit. We use safe, enamel-friendly techniques for long-lasting, radiant results",
+  },
+  {
+    id: "dental-veneers",
+    title: "Dental Veneers",
+    image: "/assets/services/veneers.jpg",
+    description:
+      "Custom dental veneers are thin porcelain shells bonded to the front of your teeth to correct chips, gaps, or discoloration. They create a flawless, natural-looking smile with minimal discomfort and long-lasting results.",
+  },
+  {
+    id: "complete-dentures",
+    title: "Complete Dentures",
+    image: "/assets/services/Dentures.jpg",
+    description:
+      "Complete dentures replace all missing teeth, restoring chewing ability, speech, and facial structure. We craft comfortable, durable dentures that look natural and help you regain confidence.",
+  },
+  {
+    id: "metal-braces",
+    title: "Metal Braces",
+    image: "/assets/services/metal-braces.jpg",
+    description:
+      "Traditional metal braces are a reliable way to correct misaligned teeth, spacing, and bite issues. Each treatment plan is customized to deliver effective, long-lasting results for all ages.",
+  },
+  {
+    id: "dental-fillings",
+    title: "Dental Fillings",
+    image: "/assets/services/fillings.jpg",
+    description:
+      "Dental fillings repair cavities and restore tooth strength using durable, tooth-colored materials. Our minimally invasive approach ensures long-lasting protection while keeping your smile natural and healthy.",
   },
 ];
 
@@ -75,12 +103,12 @@ export default function ServicesPage() {
         <motion.p
           variants={fadeUp}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
           className={styles.para}
-          style={{ maxWidth: "720px", margin: "0 auto" }}
         >
-          Modern dentistry delivered with precision, comfort, and clarity —
-          trusted by families across Madurai.
+          From preventive care to advanced dental treatments, we focus on
+          comfort, clarity, and long-term results — serving families across
+          Madurai with modern, patient-first dentistry.
         </motion.p>
       </Section>
 
@@ -89,17 +117,20 @@ export default function ServicesPage() {
         const reverse = index % 2 !== 0;
         const dark = index % 2 !== 0;
 
-        const ref = useRef<HTMLDivElement | null>(null);
+        // Create individual ref for each image for scroll tracking
+        const imgRef = useRef<HTMLDivElement | null>(null);
         const { scrollYProgress } = useScroll({
-          target: ref,
+          target: imgRef,
           offset: ["start end", "end start"],
         });
-        const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
+        // Scale effect for zoom-in/out
+        const scale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
 
         return (
           <Section
             key={service.id}
-            id={service.id} // ✅ Use the slug/id here
+            id={service.id}
             bgColor={dark ? "#000" : "#fff"}
             textColor={dark ? "#fff" : "#000"}
           >
@@ -109,36 +140,52 @@ export default function ServicesPage() {
               whileInView="visible"
               viewport={{ once: true }}
               className={styles.gridTwoCols}
-              style={{ direction: reverse ? "rtl" : "ltr" }}
+              style={{
+                direction: reverse ? "rtl" : "ltr",
+                gap: "2rem",
+                alignItems: "center",
+              }}
             >
               {/* IMAGE */}
               <motion.div
-                ref={ref}
+                ref={imgRef}
                 style={{
-                  y,
-                  width: "35rem",
-                  height: "100%",
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "35rem",
+                  aspectRatio: "16/9",
                   borderRadius: "20px",
-                  backgroundImage: `
-                    linear-gradient(
-                      rgba(0,0,0,${dark ? 0.35 : 0}),
-                      rgba(0,0,0,${dark ? 0.35 : 0})
-                    ),
-                    url(${service.image})
-                  `,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  overflow: "hidden",
                   boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
-                }}
-              />
-
-              {/* CONTENT */}
-              <div
-                style={{
-                  direction: "ltr",
-                  textAlign: "left",
+                  flexShrink: 0,
+                  margin: "0 auto",
+                  scale, // <-- Apply scroll-based scale
                 }}
               >
+                <motion.img
+                  src={service.image}
+                  alt={`${service.title} at Dr. Joe’s Dental Hospital`}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+
+                {dark && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(0,0,0,0.35)",
+                    }}
+                  />
+                )}
+              </motion.div>
+
+              {/* CONTENT */}
+              <div style={{ textAlign: "left", flex: 1 }}>
                 <h2 className={styles.heading}>{service.title}</h2>
                 <p className={styles.para} style={{ marginTop: "1.5rem" }}>
                   {service.description}
@@ -166,8 +213,9 @@ export default function ServicesPage() {
           whileInView="visible"
           className={styles.para}
         >
-          Experience calm, transparent, and modern dentistry at Dr. Joe’s Dental
-          Hospital.
+          From routine checkups to advanced treatments, our team focuses on
+          comfort, clarity, and long-term oral health — so you always know what
+          to expect.
         </motion.p>
 
         <motion.a

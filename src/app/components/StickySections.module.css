@@ -90,6 +90,10 @@
   font-weight: 500;
 }
 
+.blackCard p {
+  font-size: 1rem;
+}
+
 .para{
   font-size: 1.25rem;
 }
@@ -206,6 +210,19 @@
   width: auto;
 }
 
+.serviceLink {
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.logoGroup {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -247,7 +264,6 @@
   .para {
     font-size: 1rem;
     line-height: 1.5;
-    margin-top: 0.8rem !important;
   }
 
   /* Buttons */
@@ -279,6 +295,10 @@
   .blackCard{
     font-size: 0.95rem;
     padding: 1rem;
+  }
+
+  .blackCard p {
+    font-size: .85rem;
   }
 
   /* Clinic images */
@@ -313,7 +333,7 @@
 
 /* Fix two-column layout */
 @media (max-width: 768px) {
-  .gridTwoCols {
+  .gridTwoCols  {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
     direction: ltr !important;
@@ -346,12 +366,15 @@
     font-size: 1rem;
     line-height: 1.6;
   }
+  .serviceLink {
+    font-size: .85rem;
+  }
 }
 
 /* CTA button */
 @media (max-width: 768px) {
   .btnPrimary {
-    width: 100%;
+    width: 15rem;
     text-align: center;
   }
 }

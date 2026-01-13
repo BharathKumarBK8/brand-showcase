@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, container, item } from "@/app/hooks/animation";
+import AutoPaginatedTestimonials from "./AutoPaginatedTestimonials";
+import NumberReveal from "./NumberReveal/NumberReveal";
+import ParallaxGallery from "./ParallaxGallery/ParallaxGallery";
 import styles from "./StickySections.module.css";
 import Section from "./Section";
 import Link from "next/link";
@@ -147,8 +150,13 @@ export default function StickySections() {
               >
                 <Link
                   href={`/services#${service.id}`}
+                  className={styles.serviceLink}
                   scroll
-                  style={{ display: "block", width: "100%", height: "100%" }}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                  }}
                 >
                   🦷 {service.name}
                 </Link>
@@ -182,18 +190,21 @@ export default function StickySections() {
               marginBottom: "2rem",
               display: "flex",
               alignItems: "center",
-              gap: "0.5rem", // space between words and logo
+              gap: "0.5rem",
+              flexWrap: "wrap", // allow wrapping, but controlled
             }}
           >
             <span>Why Choose</span>
-            <img
-              src={"/assets/logo.png"}
-              alt="Dr. Joe's Logo"
-              className={styles.sectionLogo}
-            />
-            <span>?</span>
-          </h2>
 
+            <span className={styles.logoGroup}>
+              <img
+                src={"/assets/logo.png"}
+                alt="Dr. Joe's Logo"
+                className={styles.sectionLogo}
+              />
+              <span>?</span>
+            </span>
+          </h2>
           {/* Cards */}
           <div
             style={{
@@ -215,22 +226,79 @@ export default function StickySections() {
                   justifyContent: "center",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "1rem",
-                  }}
-                >
+                <div>
                   <i className={point.icon}></i>
                 </div>
-                <p className={styles.para}>{point.text}</p>
+                <p>{point.text}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </Section>
 
+      <Section bgColor="#000" textColor="#fff" className={styles.extraPadding}>
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+        >
+          {/* Heading */}
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h2 className={styles.heading}>Our Impact</h2>
+            <p>
+              Real numbers, happy patients, and a glimpse of our clinic work.
+            </p>
+          </div>
+
+          {/* Number Reveal */}
+          <div style={{ marginBottom: "4rem" }}>
+            <NumberReveal
+              stats={[
+                { value: 1000, label: "Patients Treated", suffix: "+" },
+                { value: 3, label: "Years of Experience", suffix: "+" },
+                { value: 2, label: "Branches" },
+                { value: 4.9, label: "Google Rating", suffix: "★" },
+              ]}
+            />
+          </div>
+
+          {/* Testimonials */}
+          <div style={{ marginBottom: "4rem", textAlign: "center" }}>
+            <h3 style={{ marginBottom: "1.5rem" }}>What Our Patients Say</h3>
+            <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+              <AutoPaginatedTestimonials />
+            </div>
+          </div>
+
+          {/* Parallax Gallery */}
+          <div style={{ textAlign: "center" }}>
+            <h3 style={{ marginBottom: "1.5rem" }}>A Glimpse of Our Work</h3>
+            <ParallaxGallery
+              images={[
+                {
+                  src: "/assets/work1.jpg",
+                  alt: "Image 1",
+                  animationType: "img1Y",
+                },
+                {
+                  src: "/assets/work4.jpg",
+                  alt: "Image 2",
+                  animationType: "img2Y",
+                },
+                {
+                  src: "/assets/work3.jpg",
+                  alt: "Image 3",
+                  animationType: "img3Y",
+                },
+              ]}
+            />
+          </div>
+        </motion.div>
+      </Section>
+
       {/* DOCTOR */}
-      <Section textColor="#ffffff" bgColor="#000">
+      <Section textColor="#000" bgColor="#fff">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -270,7 +338,7 @@ export default function StickySections() {
 
       {/* FINAL CTA */}
       {/* ---------------- VISIT US ---------------- */}
-      <Section bgColor="#fff" textColor="#000">
+      <Section bgColor="#000" textColor="#fff">
         <div>
           {/* Heading */}
           <motion.div

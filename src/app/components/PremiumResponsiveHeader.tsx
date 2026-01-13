@@ -44,6 +44,8 @@ const menuItems = [
 const socialItems = [
   { iconClass: "bi bi-instagram", url: "#" },
   { iconClass: "bi bi-facebook", url: "#" },
+  { iconClass: "bi bi-linkedin", url: "" },
+  { iconClass: "bi bi-twitter-x", url: "" },
 ];
 
 interface HeaderProps {
