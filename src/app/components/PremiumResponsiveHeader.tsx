@@ -42,10 +42,16 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { iconClass: "bi bi-instagram", url: "#" },
+  {
+    iconClass: "bi bi-instagram",
+    url: "https://www.instagram.com/dr.joesdental/",
+  },
   { iconClass: "bi bi-facebook", url: "#" },
-  { iconClass: "bi bi-linkedin", url: "" },
-  { iconClass: "bi bi-twitter-x", url: "" },
+  {
+    iconClass: "bi bi-linkedin",
+    url: "https://www.linkedin.com/in/dr-joe-s-dental-hospital-83a8743a2?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  },
+  { iconClass: "bi bi-twitter-x", url: "https://x.com/DrJOEsDental" },
 ];
 
 interface HeaderProps {

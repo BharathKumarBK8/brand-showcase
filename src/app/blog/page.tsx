@@ -7,16 +7,15 @@ import styles from "./BlogPage.module.css";
 const posts = [
   {
     id: 1,
-    slug: "regular-dental-cleaning",
-    title: "Why Regular Dental Cleaning Matters",
-    excerpt:
-      "Routine dental cleanings help prevent cavities, gum disease, and keep your smile healthy.",
-    category: "Hygiene",
-    date: "Mar 12, 2025",
+    slug: "minor-surgical-procedures",
+    title: "Minor Surgical Procedures in Dentistry",
+    excerpt: "Minor dental surgeries for teeth, gums, and soft tissue care.",
+    category: "Surgery",
+    date: "Jan 13, 2026",
     readTime: "4 min read",
-    image: "/assets/img3.jpg",
+    image: "/assets/blog1.webp",
   },
-  {
+  /* {
     id: 2,
     slug: "children-dental-care-tips",
     title: "Top 5 Tips for Children’s Dental Care",
@@ -37,7 +36,7 @@ const posts = [
     date: "Mar 3, 2025",
     readTime: "3 min read",
     image: "/assets/img4.jpg",
-  },
+  }, */
 ];
 
 export default function BlogPage() {
