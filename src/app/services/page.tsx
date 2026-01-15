@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Section from "@/app/components/Section";
 import { fadeUp } from "../hooks/animation";
-import styles from "@/app/components/StickySections.module.css";
+import styles from "@/app/components/Section.module.css";
+import Link from "next/link";
 
 /* ---------------- Services Data ---------------- */
 const services = [
@@ -80,7 +81,6 @@ const services = [
   },
 ];
 
-/* ---------------- Page ---------------- */
 export default function ServicesPage() {
   return (
     <main className={styles.main}>
@@ -91,40 +91,27 @@ export default function ServicesPage() {
         textColor="#fff"
         overlay
       >
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className={styles.heading}
-        >
+        <motion.h1 variants={fadeUp} initial="hidden" animate="visible">
           Our Dental Services
         </motion.h1>
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className={styles.para}
-        >
+        <motion.p variants={fadeUp} initial="hidden" whileInView="visible">
           From preventive care to advanced dental treatments, we focus on
           comfort, clarity, and long-term results — serving families across
           Madurai with modern, patient-first dentistry.
         </motion.p>
       </Section>
 
-      {/* SERVICES */}
+      {/* SERVICES LIST */}
       {services.map((service, index) => {
         const reverse = index % 2 !== 0;
         const dark = index % 2 !== 0;
 
-        // Create individual ref for each image for scroll tracking
         const imgRef = useRef<HTMLDivElement | null>(null);
         const { scrollYProgress } = useScroll({
           target: imgRef,
           offset: ["start end", "end start"],
         });
-
-        // Scale effect for zoom-in/out
         const scale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
 
         return (
@@ -159,7 +146,7 @@ export default function ServicesPage() {
                   boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
                   flexShrink: 0,
                   margin: "0 auto",
-                  scale, // <-- Apply scroll-based scale
+                  scale,
                 }}
               >
                 <motion.img
@@ -186,10 +173,33 @@ export default function ServicesPage() {
 
               {/* CONTENT */}
               <div style={{ textAlign: "left", flex: 1 }}>
-                <h2 className={styles.heading}>{service.title}</h2>
-                <p className={styles.para} style={{ marginTop: "1.5rem" }}>
-                  {service.description}
-                </p>
+                <h2>{service.title}</h2>
+                <p style={{ marginTop: "1.5rem" }}>{service.description}</p>
+
+                {/* LINK TO SLUG PAGE */}
+                <Link
+                  href={`/services/${service.id}`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    marginTop: "1.5rem",
+                    fontSize: "1.25rem",
+                    fontWeight: 500,
+                    color: dark ? "#fff" : "#555", // dynamic based on section background
+                    textDecoration: "none",
+                    cursor: "pointer",
+                    transition: "color 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = dark ? "#ccc" : "#000"; // hover color also dynamic
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = dark ? "#fff" : "#555"; // reset on leave
+                  }}
+                >
+                  Learn More <span style={{ fontSize: "1.2rem" }}>→</span>
+                </Link>
               </div>
             </motion.div>
           </Section>
@@ -198,21 +208,11 @@ export default function ServicesPage() {
 
       {/* CTA */}
       <Section bgColor="#fff" textColor="#000">
-        <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className={styles.heading}
-        >
+        <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
           Book Your Appointment
         </motion.h2>
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className={styles.para}
-        >
+        <motion.p variants={fadeUp} initial="hidden" whileInView="visible">
           From routine checkups to advanced treatments, our team focuses on
           comfort, clarity, and long-term oral health — so you always know what
           to expect.

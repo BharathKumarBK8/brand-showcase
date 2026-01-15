@@ -5,7 +5,7 @@ import { fadeUp, container, item } from "@/app/hooks/animation";
 import AutoPaginatedTestimonials from "@/app/components/AutoPaginatedTestimonials";
 import NumberReveal from "@/app/components/NumberReveal/NumberReveal";
 import ParallaxGallery from "@/app/components/ParallaxGallery/ParallaxGallery";
-import styles from "@/app/components/StickySections.module.css";
+import styles from "@/app/components/Section.module.css";
 import Section from "@/app/components/Section";
 import Link from "next/link";
 
@@ -46,12 +46,7 @@ export default function LandingPage() {
     <main className={styles.main}>
       {/* HERO */}
       <Section bgImage="/assets/herobG321.jpg" textColor="#fff" overlay sticky>
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className={styles.heading}
-        >
+        <motion.h1 variants={fadeUp} initial="hidden" animate="visible">
           Madurai’s Trusted Dental Chain
         </motion.h1>
 
@@ -59,7 +54,6 @@ export default function LandingPage() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className={styles.para}
           style={{ marginTop: "1rem" }}
         >
           Pain-free, affordable dental care across Appanthirupathi and
@@ -85,15 +79,15 @@ export default function LandingPage() {
         >
           {/* LEFT: STORY */}
           <div className={styles.gridTwoColsLeft}>
-            <h2 className={styles.heading}>Built on Trust, Grown with Care</h2>
+            <h2>Built on Trust, Grown with Care</h2>
 
-            <p className={styles.para} style={{ marginTop: "1rem" }}>
+            <p style={{ marginTop: "1rem" }}>
               What began in a modest <strong>110 sq ft clinic</strong> at
               Goripalayam was driven by one simple belief — dental care should
               be gentle, honest, and affordable.
             </p>
 
-            <p className={styles.para} style={{ marginTop: "1rem" }}>
+            <p style={{ marginTop: "1rem" }}>
               Today, Dr. Joe’s Dental Hospital serves patients through
               <strong> two fully equipped branches in Madurai</strong> —
               Appanthirupathi and Pasingapuram — known for ethical dentistry and
@@ -131,11 +125,8 @@ export default function LandingPage() {
       {/* SERVICES */}
       <Section bgColor="#000" textColor="#fff">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-          <h2 className={styles.heading}>Our Dental Services</h2>
-          <p
-            className={styles.para}
-            style={{ marginTop: "1rem", marginBottom: "1rem" }}
-          >
+          <h2>Our Dental Services</h2>
+          <p style={{ marginTop: "1rem", marginBottom: "1rem" }}>
             We focus on anxiety-free dentistry — explaining every step clearly
             before treatment begins.
           </p>
@@ -155,7 +146,7 @@ export default function LandingPage() {
                 whileHover={{ scale: "1.05" }}
               >
                 <Link
-                  href={`/services#${service.id}`}
+                  href={`/services/${service.id}`}
                   className={styles.serviceLink}
                   scroll
                   style={{
@@ -169,7 +160,7 @@ export default function LandingPage() {
               </motion.div>
             ))}
           </motion.div>
-          <p className={styles.para} style={{ marginTop: "1.5rem" }}>
+          <p style={{ marginTop: "1.5rem" }}>
             With <strong>digital X-rays</strong> and
             <strong> intraoral scanners</strong>, we ensure precise, safe, and
             comfortable treatment — no guesswork, no fear.
@@ -190,16 +181,7 @@ export default function LandingPage() {
           viewport={{ once: false, amount: 0.2 }}
         >
           {/* Heading with logo and text on the same line */}
-          <h2
-            className={`${styles.heading} ${styles.headingWithLogo}`}
-            style={{
-              marginBottom: "2rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              flexWrap: "wrap", // allow wrapping, but controlled
-            }}
-          >
+          <h2 className={styles.headingWithLogo}>
             <span>Why Choose</span>
 
             <span className={styles.logoGroup}>
@@ -251,7 +233,7 @@ export default function LandingPage() {
         >
           {/* Heading */}
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 className={styles.heading}>Our Impact</h2>
+            <h2>Our Impact</h2>
             <p>
               Real numbers, happy patients, and a glimpse of our clinic work.
             </p>
@@ -261,10 +243,25 @@ export default function LandingPage() {
           <div style={{ marginBottom: "4rem" }}>
             <NumberReveal
               stats={[
-                { value: 1000, label: "Patients Treated", suffix: "+" },
-                { value: 3, label: "Years of Experience", suffix: "+" },
-                { value: 2, label: "Branches" },
-                { value: 4.9, label: "Google Rating", suffix: "★" },
+                {
+                  value: 1000,
+                  label: "Patients Treated",
+                  suffix: "+",
+                  decimals: 0,
+                },
+                {
+                  value: 3,
+                  label: "Years of Experience",
+                  suffix: "+",
+                  decimals: 0,
+                },
+                { value: 2, label: "Branches", decimals: 0 },
+                {
+                  value: 4.9,
+                  label: "Google Rating",
+                  suffix: "★",
+                  decimals: 1,
+                },
               ]}
             />
           </div>
@@ -312,23 +309,23 @@ export default function LandingPage() {
           className={styles.gridTwoCols}
         >
           <div className={styles.gridTwoColsLeft}>
-            <h2 className={styles.heading}>Meet Dr. Joe Dany</h2>
+            <h2>Meet Dr. Joe Dany</h2>
 
-            <p className={styles.para} style={{ marginTop: "1rem" }}>
+            <p style={{ marginTop: "1rem" }}>
               Dr. Joe Dany began his dental journey in 2015, gaining experience
               across Hyderabad, Chennai, Gulbarga, Tirunelveli, and Madurai —
               including
               <strong> Rajaji Government Hospital</strong>.
             </p>
 
-            <p className={styles.para} style={{ marginTop: "1rem" }}>
+            <p style={{ marginTop: "1rem" }}>
               In 2023, he founded Dr. Joe’s Dental Hospital with a clear
               mission: to deliver world-class dentistry without fear or
               financial burden. Today, he leads Madurai’s fastest-growing dental
               chain.
             </p>
 
-            <p className={styles.para} style={{ marginTop: "1rem" }}>
+            <p style={{ marginTop: "1rem" }}>
               <em>
                 “Every patient deserves clarity, comfort, and confidence.”
               </em>
@@ -381,7 +378,7 @@ export default function LandingPage() {
                   </a>
                 </address>
 
-                <p className={styles.timingsP}>
+                <p className="timingsP">
                   <i className="bi bi-clock-fill" />{" "}
                   <strong>Monday – Saturday:</strong> 10:00 AM – 9:00 PM <br />
                   <i className="bi bi-x-lg" /> <strong>Sunday:</strong> Closed
@@ -419,7 +416,7 @@ export default function LandingPage() {
                   </a>
                 </address>
 
-                <p className={styles.timingsP}>
+                <p className="timingsP">
                   <strong>
                     <i className="bi bi-clock-fill" /> Monday – Saturday:
                   </strong>{" "}

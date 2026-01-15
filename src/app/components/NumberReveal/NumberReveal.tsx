@@ -2,13 +2,16 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import "./NumberReveal.css";
 
+interface StatItem {
+  value: number;
+  label: string;
+  suffix?: string;
+  decimals?: number;
+}
+
 interface NumberRevealProps {
   title?: string;
-  stats: Array<{
-    value: number;
-    label: string;
-    suffix?: string;
-  }>;
+  stats: StatItem[];
   className?: string;
 }
 
@@ -19,7 +22,6 @@ const NumberReveal: React.FC<NumberRevealProps> = ({
 }) => {
   const ref = useRef<HTMLElement>(null);
 
-  // Trigger once when section enters viewport
   const isInView = useInView(ref, {
     once: true,
     margin: "-100px",
@@ -40,9 +42,7 @@ const NumberReveal: React.FC<NumberRevealProps> = ({
           {stats.map((stat, index) => (
             <AnimatedNumber
               key={stat.label}
-              value={stat.value}
-              label={stat.label}
-              suffix={stat.suffix}
+              {...stat}
               delay={index * 0.15}
               start={isInView}
             />
@@ -53,10 +53,7 @@ const NumberReveal: React.FC<NumberRevealProps> = ({
   );
 };
 
-interface AnimatedNumberProps {
-  value: number;
-  label: string;
-  suffix?: string;
+interface AnimatedNumberProps extends StatItem {
   delay: number;
   start: boolean;
 }
@@ -65,42 +62,48 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
   value,
   label,
   suffix = "",
+  decimals = 0,
   delay,
   start,
 }) => {
   const motionValue = useMotionValue(0);
 
-  const springValue = useSpring(motionValue, {
-    damping: 20,
-    stiffness: 100,
-    mass: 1,
+  const spring = useSpring(motionValue, {
+    damping: 25,
+    stiffness: 50,
+    mass: 1.5,
   });
 
-  const [displayValue, setDisplayValue] = useState(0);
+  const formatter = new Intl.NumberFormat(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
 
-  // Start animation once
+  const [displayValue, setDisplayValue] = useState("0");
+
   useEffect(() => {
-    if (start) {
-      const timeout = setTimeout(() => {
-        motionValue.set(value);
-      }, delay * 1000);
+    if (!start) return;
 
-      return () => clearTimeout(timeout);
-    }
+    const timeout = setTimeout(() => {
+      motionValue.set(value);
+    }, delay * 1000);
+
+    return () => clearTimeout(timeout);
   }, [start, value, delay, motionValue]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
-      setDisplayValue(Math.round(latest));
+    const unsubscribe = spring.on("change", (latest) => {
+      const formatted = formatter.format(Number(latest.toFixed(decimals)));
+      setDisplayValue(formatted);
     });
 
     return () => unsubscribe();
-  }, [springValue]);
+  }, [spring, formatter, decimals]);
 
   return (
     <div className="stat-item">
       <div className="stat-number">
-        {displayValue.toLocaleString()}
+        {displayValue}
         {suffix}
       </div>
       <div className="stat-label">{label}</div>

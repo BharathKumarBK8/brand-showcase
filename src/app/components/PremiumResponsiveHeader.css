@@ -252,10 +252,57 @@
 /* =========================
    Responsive
 ========================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-desktop { display: none; }
   .header-mobile { display: block; }
 
   .tooth-icon { width: 44px; height: 50px; }
   .mobile-logo { height: 7rem; width: auto; }
+
+  .mobile-overlay{
+    min-height: 100vh;
+  }
+  .mobile-link{
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width:1025px) and (max-width:1366px) {
+  .menu-link{
+    font-size: 1rem;
+  }
+  .contact-btn{
+    font-size: .85rem;
+  }
+  .logo{
+    height: 6rem;
+  }
+  .header-desktop{
+    padding:1.5rem
+  }
+  .social-icons{
+    gap:1rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width:400px){
+    .mobile-link{
+      font-size: 1.5rem;
+    }
+    .tooth-icon{
+      height:1.15rem;
+      width: 1.15rem;
+    }
+    .mobile-social-link{
+      font-size: 1.5rem;
+    }
+    .mobile-contact-btn{
+      font-size: 1rem;
+    }
+}
+
+@media (min-width :769px) {
+  .mobile-menu-items{
+    margin-bottom: 25rem;
+  }
 }
