@@ -25,7 +25,7 @@ const blogs = [
       "Tooth Extraction",
       "Gum Surgery",
       "Oral Health Care",
-      "Dr Joe Dental Hospital",
+      "Dr Joe's Dental Hospital",
     ],
     content: `
 Minor surgical procedures in dentistry are designed to treat common oral health problems using minimally invasive techniques, usually performed under local anesthesia. These procedures help manage conditions such as impacted teeth, gum infections, and soft-tissue abnormalities while ensuring patient comfort and faster recovery.

@@ -154,7 +154,7 @@
 /* Doctor image */
 .doctorImg {
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -320,7 +320,7 @@
 
   /* Doctor image */
   .doctorImg {
-    height: 60vh; /* shorter height for mobile */
+    height: 100vh; /* shorter height for mobile */
     border-radius: 16px;
   }
 
@@ -349,9 +349,27 @@
     gap: 2rem !important;
     direction: ltr !important;
   }
-
+/* 
   .gridTwoCols > div {
     width: 100% !important;
+  } */
+}
+
+@media (min-width:320px) and (max-width:360px) {
+  .gridTwoCols motion-div,
+  .gridTwoCols div[style*="background-image"] {
+    width: 100% !important;
+    height: 40vh !important;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width:361px) and (max-width:500px) {
+  .gridTwoCols motion-div,
+  .gridTwoCols div[style*="background-image"] {
+    width: 100% !important;
+    height: 60vh !important;
+    border-radius: 12px;
   }
 }
 
@@ -425,7 +443,7 @@
   }
 
   .doctorImg {
-    height: 65vh;
+    height: 120vh;
   }
 
   /* Cards */

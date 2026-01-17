@@ -5,6 +5,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/Aligners.jpeg",
     shortDescription:
       "Straighten your teeth discreetly with invisible aligners. Custom, removable trays gently realign your smile without metal braces, perfect for teens and adults who want comfort and confidence.",
+    reassurancePoints: [
+      "Nearly invisible & comfortable",
+      "No metal wires or brackets",
+      "Predictable, digitally planned results",
+    ],
     whatIsIt: [
       "Clear, removable trays designed to gradually shift teeth into proper alignment.",
       "Correct gaps, crowding, and bite issues without traditional braces.",
@@ -16,6 +21,11 @@ export const serviceData: Record<string, any> = {
       "Comfortable, smooth material",
       "Gradual, predictable results",
       "Ideal for adults and teens",
+    ],
+    idealFor: [
+      "Adults and teens seeking discreet treatment",
+      "Patients with mild to moderate misalignment",
+      "Those who want removable orthodontics",
     ],
     procedure: [
       "3D digital scan of your teeth for a precise treatment plan.",
@@ -46,6 +56,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/Checkups.jpg",
     shortDescription:
       "Maintain a healthy, confident smile with routine dental checkups. Our preventive care catches issues early and keeps your teeth and gums in top condition.",
+    reassurancePoints: [
+      "Gentle, pain-free checkups",
+      "Early problem detection",
+      "Modern diagnostic tools",
+    ],
     whatIsIt: [
       "Comprehensive exams to detect cavities, gum disease, and other oral issues early.",
       "Professional cleaning removes plaque and tartar.",
@@ -57,6 +72,11 @@ export const serviceData: Record<string, any> = {
       "Personalized hygiene tips",
       "Professional cleaning for a bright smile",
       "Comfortable, gentle care for all ages",
+    ],
+    idealFor: [
+      "Adults and children",
+      "Patients wanting preventive care",
+      "Those with existing dental work",
     ],
     procedure: [
       "Oral exam and medical history review.",
@@ -83,6 +103,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/Implants.jpg",
     shortDescription:
       "Dental implants are a permanent solution for missing teeth, restoring both function and aesthetics. Our expert team ensures natural-looking results with precise placement techniques, helping you smile, eat, and speak confidently.",
+    reassurancePoints: [
+      "Painless modern implant techniques",
+      "Long-lasting natural results",
+      "Experienced implant specialists",
+    ],
     whatIsIt: [
       "Dental implants are titanium posts surgically placed into the jawbone to replace missing teeth.",
       "They provide a strong foundation for crowns, bridges, or full-arch restorations, mimicking natural teeth in function and appearance.",
@@ -94,6 +119,11 @@ export const serviceData: Record<string, any> = {
       "Natural appearance and feel",
       "Prevent bone loss and preserve jaw structure",
       "Boost confidence and improve aesthetics",
+    ],
+    idealFor: [
+      "Patients with missing teeth",
+      "Those seeking a permanent solution",
+      "Patients with healthy gums and jawbone",
     ],
     procedure: [
       "Consultation & 3D Imaging – Evaluate jawbone health and plan implant placement.",
@@ -127,6 +157,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/root-canal.jpg",
     shortDescription:
       "Save your natural tooth and relieve pain with modern root canal treatment. Our expert team ensures a fast, comfortable, and effective procedure.",
+    reassurancePoints: [
+      "Pain-free modern techniques",
+      "Quick relief from tooth pain",
+      "Preserves your natural tooth",
+    ],
     whatIsIt: [
       "Treatment for infected or damaged teeth by removing the pulp and sealing the canals.",
       "Preserves the natural tooth and prevents further infection.",
@@ -138,6 +173,11 @@ export const serviceData: Record<string, any> = {
       "Prevents infection and further complications",
       "Minimally invasive with modern technology",
       "Long-lasting results",
+    ],
+    idealFor: [
+      "Patients with severe tooth pain",
+      "Infected or abscessed teeth",
+      "Teeth with deep decay",
     ],
     procedure: [
       "Local anesthesia for comfort.",
@@ -168,6 +208,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/smile-makeover.jpg",
     shortDescription:
       "Transform your smile with a personalized smile makeover. Combining veneers, whitening, crowns, and orthodontics, we create a natural, radiant smile tailored to you.",
+    reassurancePoints: [
+      "Customized digital smile design",
+      "Natural-looking results",
+      "Comprehensive aesthetic planning",
+    ],
     whatIsIt: [
       "Customized dental treatment plan to improve shape, color, alignment, and symmetry.",
       "May include veneers, crowns, teeth whitening, and orthodontics.",
@@ -179,6 +224,11 @@ export const serviceData: Record<string, any> = {
       "Improves confidence",
       "Combines multiple treatments for a balanced result",
       "Personalized for your face and lifestyle",
+    ],
+    idealFor: [
+      "Patients unhappy with their smile",
+      "Multiple cosmetic concerns",
+      "Those seeking a full transformation",
     ],
     procedure: [
       "Digital Smile Design & consultation.",
@@ -211,6 +261,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/TeethWhitening.jpg",
     shortDescription:
       "Brighten your smile safely and effectively with professional teeth whitening. Remove stains from coffee, tea, tobacco, or aging teeth in one visit.",
+    reassurancePoints: [
+      "Safe, enamel-friendly formulas",
+      "Quick visible results",
+      "Sensitivity-controlled treatment",
+    ],
     whatIsIt: [
       "Professional treatment using safe, high-concentration gels.",
       "Can be in-office or take-home kits.",
@@ -222,6 +277,11 @@ export const serviceData: Record<string, any> = {
       "Long-lasting brightness",
       "Suitable for special events or everyday confidence",
       "Customized treatment based on sensitivity",
+    ],
+    idealFor: [
+      "Stained or discolored teeth",
+      "Special events",
+      "Patients seeking quick results",
     ],
     procedure: [
       "Assessment of teeth and gums.",
@@ -248,6 +308,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/veneers.jpg",
     shortDescription:
       "Custom dental veneers are thin porcelain shells bonded to the front of your teeth. They correct chips, gaps, and discoloration, creating a flawless, natural-looking smile with minimal discomfort.",
+    reassurancePoints: [
+      "Natural tooth-like appearance",
+      "Minimal tooth preparation",
+      "Durable porcelain materials",
+    ],
     whatIsIt: [
       "Thin porcelain shells applied to the front of teeth for cosmetic improvement.",
       "Corrects chips, gaps, discoloration, or minor misalignment.",
@@ -259,6 +324,11 @@ export const serviceData: Record<string, any> = {
       "Stain-resistant and durable",
       "Minimally invasive procedure",
       "Boosts confidence",
+    ],
+    idealFor: [
+      "Cosmetic imperfections",
+      "Discolored or chipped teeth",
+      "Smile enhancement seekers",
     ],
     procedure: [
       "Consultation and digital imaging.",
@@ -289,6 +359,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/Dentures.jpg",
     shortDescription:
       "Restore missing teeth with comfortable, durable complete dentures. Regain chewing ability, speech clarity, and facial aesthetics while boosting confidence.",
+    reassurancePoints: [
+      "Custom-fit comfort",
+      "Natural appearance",
+      "Improved chewing and speech",
+    ],
     whatIsIt: [
       "Custom-made prosthetic appliances that replace all missing teeth.",
       "Enhance chewing, speech, and facial structure.",
@@ -300,6 +375,11 @@ export const serviceData: Record<string, any> = {
       "Custom fit for comfort",
       "Boosts self-confidence",
       "Prevents further bone loss",
+    ],
+    idealFor: [
+      "Patients missing all teeth",
+      "Those seeking non-surgical replacement",
+      "Budget-conscious patients",
     ],
     procedure: [
       "Initial consultation and impressions.",
@@ -330,6 +410,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/metal-braces.jpg",
     shortDescription:
       "Traditional metal braces effectively correct misaligned teeth, spacing, and bite issues. Custom treatment plans ensure comfortable, long-lasting results for patients of all ages.",
+    reassurancePoints: [
+      "Proven orthodontic method",
+      "Cost-effective solution",
+      "Suitable for all ages",
+    ],
     whatIsIt: [
       "Stainless steel brackets bonded to teeth, connected by wires.",
       "Gradually realigns teeth over time.",
@@ -341,6 +426,11 @@ export const serviceData: Record<string, any> = {
       "Cost-effective solution",
       "Suitable for children and adults",
       "Long-lasting results",
+    ],
+    idealFor: [
+      "Children and adults",
+      "Complex orthodontic cases",
+      "Budget-conscious patients",
     ],
     procedure: [
       "Initial consultation and X-rays.",
@@ -371,6 +461,11 @@ export const serviceData: Record<string, any> = {
     heroImage: "/assets/services/fillings.jpg",
     shortDescription:
       "Repair cavities and restore tooth strength with durable dental fillings. Modern techniques ensure natural-looking results and long-lasting protection.",
+    reassurancePoints: [
+      "Painless procedure",
+      "Tooth-colored materials",
+      "Quick treatment",
+    ],
     whatIsIt: [
       "Treatment to remove decay and restore tooth structure.",
       "Uses tooth-colored composites or other materials for durability.",
@@ -383,6 +478,7 @@ export const serviceData: Record<string, any> = {
       "Quick and minimally invasive",
       "Long-lasting protection",
     ],
+    idealFor: ["Cavities", "Minor tooth damage", "Preventive restoration"],
     procedure: [
       "Examination and X-rays.",
       "Decay removal using modern techniques.",
