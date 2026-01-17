@@ -1,6 +1,13 @@
 .blogPage {
   background: #f9fafb;
+  color: #000;
   padding: 8rem 1.5rem 8rem;
+  min-height: 100vh;
+}
+
+.blogSlugPage {
+  background: #f9fafb;
+  color: #000;
   min-height: 100vh;
 }
 
@@ -127,7 +134,7 @@
   letter-spacing: 0.08em;
   border-radius: 999px;
   background: rgba(41, 182, 246, 0.12);
-  color: #0288d1;
+  color: rgb(0,148,255);
 }
 
 .meta {
@@ -154,7 +161,7 @@
 
 @media (max-width: 640px) {
   .blogPage {
-    padding: 4rem 1rem 6rem;
+    padding: 6rem 1rem 6rem;
   }
 
   .grid {
@@ -167,5 +174,101 @@
 
   .hero h1 {
     font-size: 2.4rem;
+  }
+}
+
+
+.article {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 5rem 1rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.excerpt {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.content h2 {
+  font-size: 1.4rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.content p {
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  color: #374151;
+}
+
+.content ul {
+  font-size: 1.15rem;
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.content li {
+  list-style: disc;
+  margin-bottom: 0.5rem;
+}
+
+.tags {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.tag {
+  background: #f3f4f6;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.imageContainer {
+  display: flex;          /* enables flex layout */
+  justify-content: center; /* centers content horizontally */
+  margin-bottom: 2rem;    /* optional spacing below */
+}
+
+.imageWrapper {
+  position: relative;
+  width: 40rem;             /* fixed width or adjust as needed */
+  height: 40rem;            /* fixed height or adjust aspect ratio */
+  border-radius: 12px;      /* round corners (or just left corners if you want) */
+  overflow: hidden;         /* makes border-radius work */
+}
+
+.blogImg {
+  object-fit: cover;        /* ensures image fills wrapper */
+}
+
+@media (max-width:500px) {
+  .imageWrapper{
+    height: 20rem;
+  }
+}
+
+@media (min-width:501px) and (max-width:768px) {
+  .imageWrapper{
+    height: 30rem;
   }
 }
