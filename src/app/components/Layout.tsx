@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Footer from "./Footer/Footer";
 import LenisProvider from "../LenisProvider";
-import PremiumResponsiveHeader from "./PremiumResponsiveHeader";
+import Header from "./Header/Header";
 import MobileStickyCTA from "./MobileStickyCTA";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <LenisProvider>
-      <PremiumResponsiveHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {children}
       <Footer />
       <MobileStickyCTA menuOpen={menuOpen} />
