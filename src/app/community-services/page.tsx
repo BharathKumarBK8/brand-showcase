@@ -3,42 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "./CommunityServicesPage.module.css";
-
-const services = [
-  {
-    id: 1,
-    slug: "free-dental-checkup",
-    title: "Free Dental Checkup Camp",
-    description:
-      "Join our free dental checkup camp and get expert consultation on oral health.",
-    category: "Health",
-    date: "Jan 20, 2026",
-    readTime: "5 min read",
-    image: "/assets/CommunityService2.webp",
-  },
-  /* {
-    id: 2,
-    slug: "oral-health-awareness",
-    title: "Oral Health Awareness Program",
-    description:
-      "Educating the community about proper oral hygiene and preventive care.",
-    category: "Education",
-    date: "Jan 15, 2026",
-    readTime: "4 min read",
-    image: "/assets/service2.jpg",
-  },
-  {
-    id: 3,
-    slug: "school-dental-camps",
-    title: "School Dental Camps",
-    description:
-      "Providing dental checkups and guidance to children in local schools.",
-    category: "Kids",
-    date: "Jan 10, 2026",
-    readTime: "3 min read",
-    image: "/assets/service3.jpg",
-  }, */
-];
+import { communityServicesData } from "../data/communityServices";
 
 export default function CommunityServicesPage() {
   return (
@@ -71,19 +36,27 @@ export default function CommunityServicesPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <Link href={`/community-services/${services[0].slug}`}>
-            <img src={services[0].image} alt={services[0].title} />
+          <Link href={`/community-services/${communityServicesData[0].slug}`}>
+            <img
+              src={communityServicesData[0].image}
+              alt={communityServicesData[0].title}
+            />
           </Link>
           <div className={styles.featuredContent}>
-            <span className={styles.tag}>{services[0].category}</span>
+            <span className={styles.tag}>
+              {communityServicesData[0].category}
+            </span>
             <h2>
-              <Link href={`/community-services/${services[0].slug}`}>
-                {services[0].title}
+              <Link
+                href={`/community-services/${communityServicesData[0].slug}`}
+              >
+                {communityServicesData[0].title}
               </Link>
             </h2>
-            <p>{services[0].description}</p>
+            <p>{communityServicesData[0].shortDescription}</p>
             <div className={styles.meta}>
-              {services[0].date} · {services[0].readTime}
+              {communityServicesData[0].date} ·{" "}
+              {communityServicesData[0].readTime}
             </div>
           </div>
         </motion.article>
@@ -91,7 +64,7 @@ export default function CommunityServicesPage() {
 
       {/* Services Grid */}
       <section className={styles.grid}>
-        {services.slice(1).map((service, i) => (
+        {communityServicesData.slice(1).map((service, i) => (
           <motion.article
             key={service.id}
             className={styles.card}
@@ -111,7 +84,7 @@ export default function CommunityServicesPage() {
                   {service.title}
                 </Link>
               </h3>
-              <p>{service.description}</p>
+              <p>{service.shortDescription}</p>
               <div className={styles.meta}>
                 {service.date} · {service.readTime}
               </div>
