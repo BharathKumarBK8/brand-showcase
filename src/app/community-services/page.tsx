@@ -53,7 +53,7 @@ export default function CommunityServicesPage() {
                 {communityServicesData[0].title}
               </Link>
             </h2>
-            <p>{communityServicesData[0].shortDescription}</p>
+            <p>{communityServicesData[0].excerpt}</p>
             <div className={styles.meta}>
               {communityServicesData[0].date} ·{" "}
               {communityServicesData[0].readTime}
@@ -84,7 +84,7 @@ export default function CommunityServicesPage() {
                   {service.title}
                 </Link>
               </h3>
-              <p>{service.shortDescription}</p>
+              <p>{service.excerpt}</p>
               <div className={styles.meta}>
                 {service.date} · {service.readTime}
               </div>

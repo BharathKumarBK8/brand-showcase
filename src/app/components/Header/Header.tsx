@@ -34,11 +34,11 @@ const menuItems = [
     href: "/community-services",
     icon: <i className="bi bi-people-fill" />,
   },
-  {
+  /* {
     label: "testimonials",
     href: "/testimonials",
     icon: <i className="bi bi-chat-dots-fill"></i>,
-  },
+  }, */
 ];
 
 const socialItems = [
@@ -46,7 +46,10 @@ const socialItems = [
     iconClass: "bi bi-instagram",
     url: "https://www.instagram.com/dr.joesdental/",
   },
-  { iconClass: "bi bi-facebook", url: "#" },
+  {
+    iconClass: "bi bi-facebook",
+    url: "https://www.facebook.com/share/1GS42zVBaB/",
+  },
   {
     iconClass: "bi bi-linkedin",
     url: "https://www.linkedin.com/in/dr-joe-s-dental-hospital-83a8743a2?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -81,7 +84,8 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
 
         <nav className="menu-items">
           {menuItems.map((item, i) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <MotionLink
                 key={item.label}
@@ -105,6 +109,8 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
               <motion.a
                 key={i}
                 href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, color: "#ccc" }}
                 className="social-link"
               >
@@ -160,7 +166,9 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
             >
               <div className="mobile-menu-items">
                 {menuItems.map((item, i) => {
-                  const isActive = pathname === item.href;
+                  const isActive =
+                    pathname === item.href ||
+                    pathname.startsWith(item.href + "/");
                   return (
                     <MotionLink
                       key={item.label}
@@ -186,6 +194,8 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
                     key={i}
                     href={s.url}
                     className="mobile-social-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{
                       opacity: 1,

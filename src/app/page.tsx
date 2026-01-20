@@ -244,7 +244,7 @@ export default function LandingPage() {
             <NumberReveal
               stats={[
                 {
-                  value: 1000,
+                  value: 2000,
                   label: "Patients Treated",
                   suffix: "+",
                   decimals: 0,
@@ -255,7 +255,7 @@ export default function LandingPage() {
                   suffix: "+",
                   decimals: 0,
                 },
-                { value: 2, label: "Branches", decimals: 0 },
+                { value: 3, label: "Branches", decimals: 0 },
                 {
                   value: 4.9,
                   label: "Google Rating",
@@ -267,9 +267,15 @@ export default function LandingPage() {
           </div>
 
           {/* Testimonials */}
-          <div style={{ marginBottom: "4rem", textAlign: "center" }}>
+          <div
+            style={{
+              marginBottom: "4rem",
+              textAlign: "center",
+              height: "30vh",
+            }}
+          >
             <h3 style={{ marginBottom: "1.5rem" }}>What Our Patients Say</h3>
-            <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
               <AutoPaginatedTestimonials />
             </div>
           </div>

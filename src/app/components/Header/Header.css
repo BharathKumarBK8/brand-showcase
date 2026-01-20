@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   transition: color 0.2s, transform 0.2s;
 }
 
@@ -70,7 +70,7 @@
 
 .social-link {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   transition: color 0.2s, transform 0.2s;
 }
 
@@ -269,7 +269,7 @@
 
 @media (min-width:1025px) and (max-width:1366px) {
   .menu-link{
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .contact-btn{
     font-size: .85rem;

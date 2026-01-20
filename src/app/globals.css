@@ -88,6 +88,10 @@ p{
   padding: 1.5rem;
 }
 
+.auto-testimonials{
+  font-style: italic;
+}
+
 @media (min-width: 320px) and (max-width:419px){
 h1,h2{
     font-size: 1.6rem;
@@ -112,6 +116,9 @@ h1,h2{
   .timingsP{
     font-size: 1rem;
     padding: .5rem;
+  }
+  .auto-testimonials{
+    font-size: .8rem;
   }
 }
 
@@ -143,6 +150,9 @@ h1,h2{
   .timingsP{
     font-size: 1rem;
     padding: .75rem;
+  }
+  .auto-testimonials{
+    font-size: 1rem;
   }
 }
 

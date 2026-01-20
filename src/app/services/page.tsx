@@ -54,7 +54,7 @@ const services = [
   {
     id: "dental-veneers",
     title: "Dental Veneers",
-    image: "/assets/services/veneers.jpg",
+    image: "/assets/services/veneers.webp",
     description:
       "Custom dental veneers are thin porcelain shells bonded to the front of your teeth to correct chips, gaps, or discoloration. They create a flawless, natural-looking smile with minimal discomfort and long-lasting results.",
   },
@@ -75,7 +75,7 @@ const services = [
   {
     id: "dental-fillings",
     title: "Dental Fillings",
-    image: "/assets/services/fillings.jpg",
+    image: "/assets/services/dental-fillings.jpg",
     description:
       "Dental fillings repair cavities and restore tooth strength using durable, tooth-colored materials. Our minimally invasive approach ensures long-lasting protection while keeping your smile natural and healthy.",
   },
