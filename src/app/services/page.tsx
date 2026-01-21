@@ -34,7 +34,7 @@ const services = [
   {
     id: "root-canal",
     title: "Root Canal Treatment",
-    image: "/assets/services/root-canal.jpg",
+    image: "/assets/services/root-canal.png",
     description:
       "Root canal treatment saves infected or damaged teeth, relieving pain and preventing further complications. With advanced tools and modern anesthesia, we ensure a comfortable and effective procedure",
   },
@@ -87,7 +87,7 @@ export default function ServicesPage() {
     <main className={styles.main}>
       {/* HERO */}
       <Section
-        bgImage="/assets/hero.jpg"
+        bgImage="/assets/serviceHero1.jpg"
         bgColor="#000"
         textColor="#fff"
         overlay
@@ -105,7 +105,7 @@ export default function ServicesPage() {
 
       {/* SERVICES LIST */}
       {services.map((service, index) => {
-        const reverse = index % 2 !== 0;
+        const reverse = index % 2 !== 0; // every second service is reversed
         const dark = index % 2 !== 0;
 
         const imgRef = useRef<HTMLDivElement | null>(null);
@@ -127,12 +127,8 @@ export default function ServicesPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className={styles.gridTwoCols}
-              style={{
-                direction: reverse ? "rtl" : "ltr",
-                gap: "2rem",
-                alignItems: "center",
-              }}
+              className={`${styles.flexTwoCols} ${reverse ? styles.reverse : ""}`}
+              style={{ gap: "2rem", alignItems: "center" }}
             >
               {/* IMAGE */}
               <motion.div
@@ -174,7 +170,7 @@ export default function ServicesPage() {
               </motion.div>
 
               {/* CONTENT */}
-              <div style={{ textAlign: "left", flex: 1 }}>
+              <div className={styles.flexContent}>
                 <h2>{service.title}</h2>
                 <p style={{ marginTop: "1.5rem" }}>{service.description}</p>
 
@@ -188,16 +184,16 @@ export default function ServicesPage() {
                     marginTop: "1.5rem",
                     fontSize: "1.25rem",
                     fontWeight: 500,
-                    color: dark ? "#fff" : "#555", // dynamic based on section background
+                    color: dark ? "#fff" : "#555",
                     textDecoration: "none",
                     cursor: "pointer",
                     transition: "color 0.2s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = dark ? "#ccc" : "#000"; // hover color also dynamic
+                    e.currentTarget.style.color = dark ? "#ccc" : "#000";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = dark ? "#fff" : "#555"; // reset on leave
+                    e.currentTarget.style.color = dark ? "#fff" : "#555";
                   }}
                 >
                   Learn More <span style={{ fontSize: "1.2rem" }}>→</span>
@@ -209,7 +205,7 @@ export default function ServicesPage() {
       })}
 
       {/* CTA */}
-      <Section bgColor="#fff" textColor="#000">
+      <Section textColor="#fff" bgImage="/assets/serviceHero2.webp" overlay>
         <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
           Book Your Appointment
         </motion.h2>

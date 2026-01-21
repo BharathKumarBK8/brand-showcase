@@ -9,7 +9,7 @@ export default function ServiceContent({ service }: any) {
   return (
     <main style={{ paddingTop: "5rem" }}>
       {service.reassurancePoints && (
-        <section className="py-6 bg-black">
+        <section className="py-10 bg-black">
           <div className="max-w-6xl mx-auto px-4">
             <motion.div
               variants={container}
@@ -41,7 +41,7 @@ export default function ServiceContent({ service }: any) {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               {service.title}
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-white leading-relaxed">
               {service.shortDescription}
             </p>
           </motion.div>
