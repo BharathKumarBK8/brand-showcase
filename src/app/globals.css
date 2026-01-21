@@ -88,6 +88,14 @@ p{
   padding: 1.5rem;
 }
 
+.autoTestimonials-container{
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .auto-testimonials{
   font-style: italic;
 }

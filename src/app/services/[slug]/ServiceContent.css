@@ -1,0 +1,217 @@
+/* ----------------- GLOBAL ----------------- */
+section {
+  width: 100%;
+}
+
+/* ----------------- HERO ----------------- */
+.hero {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 768px;
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: #e5e7eb;
+}
+
+/* ----------------- REASSURANCE POINTS ----------------- */
+.reassurance-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+  font-weight: 500;
+}
+
+.reassurance-point {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: rgb(0, 148, 255);
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.reassurance-point span {
+  font-weight: bold;
+  color: rgb(0, 148, 255);
+}
+
+.reassurance-point:hover {
+  background-color:white;
+  color: black;
+}
+
+/* ----------------- POINT ITEMS ----------------- */
+.point-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.point-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  color: black;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+}
+
+.point-item span {
+  color: rgb(0, 148, 255);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.point-item:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ----------------- TIMELINE ----------------- */
+.timeline {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  width: 0.25rem;
+  height: 100%;
+  background-color: #d1d5db; /* gray-300 */
+}
+
+.timeline-step {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+}
+
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #3b82f6; /* blue-500 */
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.timeline-step span {
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+/* ----------------- FAQ ----------------- */
+.faq-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ----------------- CTA ----------------- */
+.cta-section {
+  background-color: #3b82f6;
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.125rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: white;
+  color: #3b82f6;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* ----------------- RESPONSIVE ----------------- */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-desc {
+    font-size: 1.25rem;
+  }
+  .point-item span {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-desc {
+    font-size: 1.5rem;
+  }
+}

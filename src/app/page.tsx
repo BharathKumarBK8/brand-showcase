@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, container, item } from "@/app/hooks/animation";
+import { openWhatsApp } from "./utils/whatsapp";
 import AutoPaginatedTestimonials from "@/app/components/AutoPaginatedTestimonials";
 import NumberReveal from "@/app/components/NumberReveal/NumberReveal";
 import ParallaxGallery from "@/app/components/ParallaxGallery/ParallaxGallery";
@@ -64,6 +65,7 @@ export default function LandingPage() {
           className={styles.btnPrimary}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={openWhatsApp}
         >
           Book Appointment
         </motion.a>
@@ -113,6 +115,7 @@ export default function LandingPage() {
                   <img
                     src={"/assets/locationpicker.svg"}
                     className={styles.locationPicker}
+                    loading="lazy"
                   />
                   <p className={styles.clinicName}>{clinic.name}</p>
                 </div>
@@ -189,6 +192,7 @@ export default function LandingPage() {
                 src={"/assets/logo.png"}
                 alt="Dr. Joe's Logo"
                 className={styles.sectionLogo}
+                loading="lazy"
               />
               <span>?</span>
             </span>
@@ -271,7 +275,7 @@ export default function LandingPage() {
             style={{
               marginBottom: "4rem",
               textAlign: "center",
-              height: "30vh",
+              // height: "30vh", // remove this
             }}
           >
             <h3 style={{ marginBottom: "1.5rem" }}>What Our Patients Say</h3>

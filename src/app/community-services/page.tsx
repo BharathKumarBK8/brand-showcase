@@ -40,6 +40,7 @@ export default function CommunityServicesPage() {
             <img
               src={communityServicesData[0].image}
               alt={communityServicesData[0].title}
+              loading="lazy"
             />
           </Link>
           <div className={styles.featuredContent}>
@@ -75,7 +76,7 @@ export default function CommunityServicesPage() {
             whileHover={{ y: -6 }}
           >
             <Link href={`/community-services/${service.slug}`}>
-              <img src={service.image} alt={service.title} />
+              <img src={service.image} alt={service.title} loading="lazy" />
             </Link>
             <div className={styles.cardContent}>
               <span className={styles.tag}>{service.category}</span>

@@ -71,7 +71,7 @@ export default function BlogPage() {
           transition={{ duration: 0.6 }}
         >
           <Link href={`/blog/${posts[0].slug}`}>
-            <img src={posts[0].image} alt={posts[0].title} />
+            <img src={posts[0].image} alt={posts[0].title} loading="lazy" />
           </Link>
           <div className={styles.featuredContent}>
             <span className={styles.tag}>{posts[0].category}</span>
@@ -99,7 +99,7 @@ export default function BlogPage() {
             whileHover={{ y: -6 }}
           >
             <Link href={`/blog/${post.slug}`}>
-              <img src={post.image} alt={post.title} />
+              <img src={post.image} alt={post.title} loading="lazy" />
             </Link>
             <div className={styles.cardContent}>
               <span className={styles.tag}>{post.category}</span>

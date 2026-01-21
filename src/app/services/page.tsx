@@ -6,6 +6,7 @@ import Section from "@/app/components/Section";
 import { fadeUp } from "../hooks/animation";
 import styles from "@/app/components/Section.module.css";
 import Link from "next/link";
+import { openWhatsApp } from "../utils/whatsapp";
 
 /* ---------------- Services Data ---------------- */
 const services = [
@@ -158,6 +159,7 @@ export default function ServicesPage() {
                     objectFit: "cover",
                     display: "block",
                   }}
+                  loading="lazy"
                 />
 
                 {dark && (
@@ -222,6 +224,7 @@ export default function ServicesPage() {
           className={styles.btnPrimary}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={openWhatsApp}
         >
           Book Appointment
         </motion.a>

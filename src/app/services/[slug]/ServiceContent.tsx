@@ -1,152 +1,206 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Section from "@/app/components/Section";
 import { fadeUp, container, item } from "@/app/hooks/animation";
+import "./ServiceContent.css";
+import { openWhatsApp } from "@/app/utils/whatsapp";
 
 export default function ServiceContent({ service }: any) {
   return (
-    <main>
-      {/* ---------------- HERO ---------------- */}
-      <Section
-        bgImage={service.heroImage}
-        bgColor="#000"
-        textColor="#fff"
-        overlay
-      >
-        <motion.h1 variants={fadeUp} initial="hidden" animate="visible">
-          {service.title}
-        </motion.h1>
-        <motion.p variants={fadeUp} initial="hidden" animate="visible">
-          {service.shortDescription}
-        </motion.p>
-      </Section>
-
-      {/* ---------------- TRUST STRIP ---------------- */}
+    <main style={{ paddingTop: "5rem" }}>
       {service.reassurancePoints && (
-        <Section bgColor="#fff" textColor="#000">
-          <motion.div
-            variants={container}
+        <section className="py-6 bg-black">
+          <div className="max-w-6xl mx-auto px-4">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="visible"
+              className="reassurance-points"
+            >
+              {service.reassurancePoints.map((point: string, index: number) => (
+                <motion.span
+                  key={index}
+                  variants={item}
+                  whileHover={{ scale: 1.05 }}
+                  className="reassurance-point"
+                >
+                  <span>✔</span>
+                  {point}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* INTRO + IMAGE (REPLACES HERO & IMAGE+KEYPOINTS) */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-14 items-center">
+          {/* Text */}
+          <motion.div variants={fadeUp} initial="hidden" animate="visible">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              {service.title}
+            </h1>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {service.shortDescription}
+            </p>
+          </motion.div>
+
+          {/* Image */}
+          <motion.img
+            src={service.heroImage}
+            alt={service.title}
+            variants={fadeUp}
+            loading="lazy"
+            initial="hidden"
+            animate="visible"
+            className="rounded-2xl shadow-lg w-full h-[360px] object-cover"
+          />
+        </div>
+      </section>
+
+      {/* WHAT IT DOES */}
+      {service.whatIsIt && (
+        <section className="bg-gray-50 py-16 text-black">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
+              What this treatment helps with
+            </motion.h2>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              className="point-container"
+            >
+              {service.whatIsIt.map((point: string, index: number) => (
+                <motion.span key={index} variants={item} className="point-item">
+                  <span>✔</span>
+                  {point}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* BENEFITS */}
+      {service.benefits && (
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
+              Benefits of {service.title}
+            </motion.h2>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              className="point-container"
+            >
+              {service.benefits.map((point: string, index: number) => (
+                <motion.span key={index} variants={item} className="point-item">
+                  <span>✔</span>
+                  {point}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* IDEAL FOR */}
+      {service.idealFor && (
+        <section className="bg-white py-16 text-black">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
+              Is this treatment right for you?
+            </motion.h2>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              className="point-container"
+            >
+              {service.idealFor.map((point: string, index: number) => (
+                <motion.span key={index} variants={item} className="point-item">
+                  <span>✔</span>
+                  {point}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* PROCEDURE TIMELINE */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.h2
+            variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            className="grid gap-6 md:grid-cols-3 text-center"
+            className="text-center mb-8"
           >
-            {service.reassurancePoints.map((point: string, i: number) => (
-              <motion.div
-                key={i}
-                variants={item}
-                className="border rounded-xl p-6 font-medium"
-              >
-                {point}
-              </motion.div>
-            ))}
-          </motion.div>
-        </Section>
-      )}
-
-      {/* ---------------- WHAT THIS TREATMENT DOES ---------------- */}
-      <Section bgColor="#f5f5f5" textColor="#000">
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-          <h2>What this treatment helps with</h2>
-          <div className="grid gap-4 mt-6 md:grid-cols-2">
-            {service.whatIsIt.map((item: string, i: number) => (
-              <div key={i} className="bg-white p-5 rounded-lg shadow-sm">
-                {item}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </Section>
-
-      {/* ---------------- BENEFITS ---------------- */}
-      <Section bgColor="#fff" textColor="#000">
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-          <h2>Why patients choose {service.title}</h2>
-          <div className="grid gap-4 mt-6 md:grid-cols-2">
-            {service.benefits.map((benefit: string, i: number) => (
-              <div key={i} className="border-l-4 border-[rgb(0,148,255)] pl-4">
-                {benefit}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </Section>
-
-      {/* ---------------- IDEAL FOR ---------------- */}
-      {service.idealFor && (
-        <Section bgColor="#000" textColor="#fff">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-            <h2>Is this treatment right for you?</h2>
-            <ul className="mt-6 space-y-3">
-              {service.idealFor.map((item: string, i: number) => (
-                <li key={i}>✔ {item}</li>
-              ))}
-            </ul>
-          </motion.div>
-        </Section>
-      )}
-
-      {/* ---------------- HOW IT WORKS ---------------- */}
-      <Section bgColor="#f5f5f5" textColor="#000">
-        <motion.div variants={container} initial="hidden" whileInView="visible">
-          <h2>How the treatment works</h2>
-          <div className="grid gap-6 mt-6 md:grid-cols-2">
-            {service.procedure.map((step: string, i: number) => (
-              <motion.div
-                key={i}
-                variants={item}
-                className="bg-white p-6 rounded-xl shadow-sm"
-              >
-                <span className="text-[rgb(0,148,255)] font-bold">
-                  Step {i + 1}
-                </span>
-                <p className="mt-2">{step}</p>
+            How the treatment works
+          </motion.h2>
+          <div className="timeline">
+            {service.procedure.map((step: string, index: number) => (
+              <motion.div key={index} variants={item} className="timeline-step">
+                <span>Step {index + 1}</span>
+                <p>{step}</p>
               </motion.div>
             ))}
           </div>
-        </motion.div>
-      </Section>
+        </div>
+      </section>
 
-      {/* ---------------- FAQ ---------------- */}
+      {/* FAQ */}
       {service.faqs && (
-        <Section bgColor="#fff" textColor="#000">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible">
-            <h2>Frequently Asked Questions</h2>
-            <div className="mt-6 space-y-4">
-              {service.faqs.map((faq: any, i: number) => (
-                <details
-                  key={i}
-                  className="border rounded-lg p-4 cursor-pointer"
+        <section className="bg-white py-16 text-black">
+          <div className="max-w-4xl mx-auto px-4">
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              className="text-center mb-8"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <div className="space-y-4">
+              {service.faqs.map((faq: any, index: number) => (
+                <motion.details
+                  key={index}
+                  variants={item}
+                  className="faq-item"
                 >
-                  <summary className="font-semibold">{faq.question}</summary>
-                  <p className="mt-2">{faq.answer}</p>
-                </details>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </motion.details>
               ))}
             </div>
-          </motion.div>
-        </Section>
+          </div>
+        </section>
       )}
 
-      {/* ---------------- FINAL CTA ---------------- */}
-      <Section bgColor="rgb(0,148,255)" textColor="#fff">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          className="text-center"
-        >
-          <h2>Ready to move forward?</h2>
-          <p className="mt-3">
+      {/* CTA */}
+      <section className="cta-section">
+        <div className="max-w-3xl mx-auto">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible">
+            Ready to move forward?
+          </motion.h2>
+          <motion.p variants={fadeUp} initial="hidden" whileInView="visible">
             Get a personalized consultation with our dental experts.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block mt-6 text-[rgb(0,148,255)] bg-white px-8 py-4 rounded-lg font-semibold"
+          </motion.p>
+          <motion.a
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            className="cta-button"
+            onClick={openWhatsApp}
           >
             Book Appointment
-          </a>
-        </motion.div>
-      </Section>
+          </motion.a>
+        </div>
+      </section>
     </main>
   );
 }

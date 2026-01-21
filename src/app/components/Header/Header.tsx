@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Header.css";
+import { openWhatsApp } from "@/app/utils/whatsapp";
 
 // motion Link wrapper
 const MotionLink = motion.create(Link);
@@ -79,7 +80,12 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
       {/* Desktop Header */}
       <div className="header-desktop">
         <Link href="/">
-          <img src="/assets/logo2.png" alt="Logo" className="logo" />
+          <img
+            src="/assets/logo2.png"
+            alt="Logo"
+            className="logo"
+            loading="lazy"
+          />
         </Link>
 
         <nav className="menu-items">
@@ -119,13 +125,13 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
             ))}
           </div>
 
-          <MotionLink
-            href="#appointment"
+          <motion.a
+            onClick={openWhatsApp}
             className="contact-btn"
             whileHover={{ scale: 1.05 }}
           >
             Book Appointment <i className="bi bi-arrow-right" />
-          </MotionLink>
+          </motion.a>
         </div>
       </div>
 
@@ -133,7 +139,12 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
       <div className="header-mobile">
         <div className="mobile-topbar">
           <Link href="/" onClick={() => setMenuOpen(false)}>
-            <img src="/assets/logo2.png" alt="Logo" className="mobile-logo" />
+            <img
+              src="/assets/logo2.png"
+              alt="Logo"
+              className="mobile-logo"
+              loading="lazy"
+            />
           </Link>
 
           <button
@@ -208,15 +219,17 @@ const Header: React.FC<HeaderProps> = ({ menuOpen, setMenuOpen }) => {
                 ))}
               </div>
 
-              <MotionLink
-                href="#appointment"
+              <motion.a
                 className="mobile-contact-btn"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1, transition: { delay: 1 } }}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  openWhatsApp();
+                  setMenuOpen(false);
+                }}
               >
                 Book Appointment <i className="bi bi-arrow-right" />
-              </MotionLink>
+              </motion.a>
             </motion.nav>
           )}
         </AnimatePresence>

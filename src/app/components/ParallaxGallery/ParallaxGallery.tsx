@@ -14,7 +14,7 @@ interface ParallaxGalleryProps {
 }
 
 export const useParallaxGalleryAnimations = (
-  scrollYProgress: MotionValue<number>
+  scrollYProgress: MotionValue<number>,
 ) => ({
   img1Y: useTransform(scrollYProgress, [0, 1], [-60, 5]),
   img2Y: useTransform(scrollYProgress, [0, 1], [-40, 5]),
@@ -60,6 +60,7 @@ const ParallaxGallery: React.FC<ParallaxGalleryProps> = ({
           src={image.src}
           alt={image.alt}
           style={{ y: getYTransform(image.animationType), scale: imgZoom }}
+          loading="lazy"
         />
       ))}
     </motion.section>
