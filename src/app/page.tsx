@@ -46,7 +46,7 @@ export default function LandingPage() {
   return (
     <main className={styles.main}>
       {/* HERO */}
-      <Section bgImage="/assets/herobG321.jpg" textColor="#fff" overlay sticky>
+      <Section bgImage="/assets/heroBg.jpg" textColor="#fff" overlay sticky>
         <motion.h1 variants={fadeUp} initial="hidden" animate="visible">
           Madurai’s Trusted Dental Chain
         </motion.h1>
@@ -295,7 +295,7 @@ export default function LandingPage() {
                   animationType: "img1Y",
                 },
                 {
-                  src: "/assets/work4.jpg",
+                  src: "/assets/work2.jpg",
                   alt: "Image 2",
                   animationType: "img2Y",
                 },

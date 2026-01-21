@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import "./MobileStickyCTA.css";
 
 export default function MobileStickyCTA({ menuOpen }: { menuOpen: boolean }) {
@@ -9,12 +8,7 @@ export default function MobileStickyCTA({ menuOpen }: { menuOpen: boolean }) {
   if (menuOpen) return null;
 
   return (
-    <motion.div
-      className={`mobile-cta-pill ${collapsed ? "collapsed" : ""}`}
-      animate={{ width: collapsed ? 64 : 400 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      style={{ height: 64 }}
-    >
+    <div className={`mobile-cta-pill ${collapsed ? "collapsed" : ""}`}>
       {/* Toggle button */}
       <button
         className="cta-toggle"
@@ -22,7 +16,6 @@ export default function MobileStickyCTA({ menuOpen }: { menuOpen: boolean }) {
         aria-label={collapsed ? "Expand CTA" : "Collapse CTA"}
       >
         {collapsed ? (
-          // Mini CTA hint: phone + WhatsApp stacked
           <div className="mini-cta-icons">
             <i className="bi bi-telephone-fill" />
             <i className="bi bi-whatsapp" />
@@ -54,6 +47,6 @@ export default function MobileStickyCTA({ menuOpen }: { menuOpen: boolean }) {
           </a>
         </>
       )}
-    </motion.div>
+    </div>
   );
 }
